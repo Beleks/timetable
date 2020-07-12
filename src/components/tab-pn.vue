@@ -16,8 +16,8 @@
     <div class="week-two" v-if="currentWeek === 'two'">
       <div class="block">
         <div class="top">
-          <div class="top-par">1</div>
-          <div class="top-time">09:00 - 10:35</div>
+          <div class="top-par-two">1</div>
+          <div class="top-time-two">09:00 - 10:35</div>
         </div>
         <div class="main-section">лек. Экологические аспекты регионального природопользования</div>
         <div class="footer">
@@ -70,6 +70,26 @@ export default {
     padding: 0.2em 0.5em;
   }
 }
+
+// =======================
+.top-par-two {
+  background-color: rgb(94,114,228);
+  color: white;
+  border-radius: 15px;
+  padding: 0.2em 0.5em;
+}
+.top-time-two {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: rgb(251,140,0);
+  background-color: rgb(94,114,228);
+  border-radius: 10px;
+  padding: 0.1em 0.3em;
+  color: white;
+}
+
+// =======================
 .main-section {
   margin-top: 0.5em;
 }

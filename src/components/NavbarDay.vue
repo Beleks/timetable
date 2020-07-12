@@ -82,7 +82,7 @@ button {
   background-color: rgb(50, 183, 108);
 }
 .activeWeekTwo {
-  background-color: rgb(251, 140, 0);
+  background-color: rgb(94,114,228);
 }
 
 .menu-days {
