@@ -1,5 +1,13 @@
 <template>
-    <div>
-        Понедельник
-    </div>
+  <div>
+    Понедельник
+  </div>
 </template>
+<script>
+export default {
+  
+}
+</script>
+<style lang="scss" scoped>
+
+</style>
