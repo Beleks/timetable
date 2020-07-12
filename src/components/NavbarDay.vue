@@ -1,8 +1,16 @@
 <template>
   <div>
     <div class="change-week">
-      <div class="week one">1-я неделя</div>
-      <div class="week two">2-я неделя</div>
+      <div
+        class="week"
+        :class="{activeWeekOne: currentWeek === one }"
+        @click="currentWeek = one"
+      >1-я неделя</div>
+      <div
+        class="week"
+        :class="{activeWeekTwo: currentWeek === two }"
+        @click="currentWeek = two"
+      >2-я неделя</div>
     </div>
     <div class="menu-days">
       <button
@@ -12,7 +20,7 @@
         v-on:click="currentTab = tab"
       >{{tab}}</button>
     </div>
-    <component :is="currentTabComponent"></component>
+    <component :is="currentTabComponent" :currentWeek="currentWeek"></component>
   </div>
 </template>
 <script>
@@ -20,7 +28,7 @@ import tabPn from "@/components/tab-pn";
 import tabVt from "@/components/tab-vt";
 import tabCr from "@/components/tab-cr";
 import tabCht from "@/components/tab-cht";
-import tabPtn from '@/components/tab-ptn'
+import tabPtn from "@/components/tab-ptn";
 import tabCb from "@/components/tab-cb";
 
 export default {
@@ -28,7 +36,9 @@ export default {
     return {
       currentTab: "Pn",
       tabs: ["Pn", "Vt", "Cr", "Cht", "Ptn", "Cb"],
-
+      one: "one",
+      two: "two",
+      currentWeek: "one"
     };
   },
   computed: {
@@ -37,7 +47,12 @@ export default {
     }
   },
   components: {
-    tabPn, tabVt, tabCr, tabCht, tabPtn, tabCb
+    tabPn,
+    tabVt,
+    tabCr,
+    tabCht,
+    tabPtn,
+    tabCb
   }
 };
 </script>
@@ -53,20 +68,21 @@ button {
   cursor: pointer;
   outline: none;
 }
-.week{
+.week {
   padding: 0.1em 0.3em;
   border-radius: 10px;
+  border: 1px solid gray;
 }
-.change-week{
+.change-week {
   display: flex;
   justify-content: space-evenly;
   margin: 0.8em 2em;
 }
-.one{
-  background-color: rgb(50,183,108);
+.activeWeekOne {
+  background-color: rgb(50, 183, 108);
 }
-.two{
-
+.activeWeekTwo {
+  background-color: rgb(251, 140, 0);
 }
 
 .menu-days {

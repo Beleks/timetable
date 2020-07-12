@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="week-one">
+    <div class="week-one" v-if="currentWeek === 'one'">
       <div class="block">
         <div class="top">
           <div class="top-par">1</div>
@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-    <div class="week-two">
+    <div class="week-two" v-if="currentWeek === 'two'">
       <div class="block">
         <div class="top">
           <div class="top-par">1</div>
@@ -29,7 +29,11 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: {
+    currentWeek: String
+  }
+};
 </script>
 <style lang="scss" scoped>
 .block {
