@@ -15,10 +15,10 @@
     <div class="menu-days">
       <button
         v-for="tab in tabs"
-        v-bind:key="tab"
-        v-bind:class="['tab-button', { active: currentTab === tab }]"
-        v-on:click="currentTab = tab"
-      >{{tab}}</button>
+        v-bind:key="tab.t"
+        v-bind:class="['tab-button', { active: currentTab === tab.t }]"
+        v-on:click="currentTab = tab.t"
+      >{{tab.ruT}}</button>
     </div>
     <component :is="currentTabComponent" :currentWeek="currentWeek"></component>
   </div>
@@ -35,7 +35,16 @@ export default {
   data: () => {
     return {
       currentTab: "Pn",
-      tabs: ["Pn", "Vt", "Cr", "Cht", "Ptn", "Cb"],
+      // tabs: ["Pn", "Vt", "Cr", "Cht", "Ptn", "Cb"],
+      // ruTabs: ["Пн", "Вт", "Ср", "Чтв", "Пт", "Сб"],
+      tabs: [
+        {t:"Pn", ruT: "Пн"},
+        {t:"Vt", ruT: "Вт"},
+        {t:"Cr", ruT: "Ср"},
+        {t:"Cht", ruT: "Чтв"},
+        {t:"Ptn", ruT: "Пт"},
+        {t:"Cb", ruT: "Сб"},
+      ],
       one: "one",
       two: "two",
       currentWeek: "one"
@@ -82,7 +91,7 @@ button {
   background-color: rgb(50, 183, 108);
 }
 .activeWeekTwo {
-  background-color: rgb(94,114,228);
+  background-color: rgb(94, 114, 228);
 }
 
 .menu-days {
