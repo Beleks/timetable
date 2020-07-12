@@ -1,14 +1,29 @@
 <template>
   <div>
-    <div class="block">
-      <div class="top">
-        <div class="top-par">1</div>
-        <div class="top-time">09:00 - 10:35</div>
+    <div class="week-one">
+      <div class="block">
+        <div class="top">
+          <div class="top-par">1</div>
+          <div class="top-time">09:00 - 10:35</div>
+        </div>
+        <div class="main-section">лек. Экологические аспекты регионального природопользования</div>
+        <div class="footer">
+          <div class="teacher">Иметхенов О.А</div>
+          <div class="class">а.8240 эбж</div>
+        </div>
       </div>
-      <div class="main-section">лек. Экологические аспекты регионального природопользования</div>
-      <div class="footer">
-        <div class="teacher">Иметхенов О.А</div>
-        <div class="class">а.8240 эбж</div>
+    </div>
+    <div class="week-two">
+      <div class="block">
+        <div class="top">
+          <div class="top-par">1</div>
+          <div class="top-time">09:00 - 10:35</div>
+        </div>
+        <div class="main-section">лек. Экологические аспекты регионального природопользования</div>
+        <div class="footer">
+          <div class="teacher">Иметхенов О.А</div>
+          <div class="class">а.8240 эбж</div>
+        </div>
       </div>
     </div>
   </div>
@@ -44,7 +59,7 @@ export default {};
     padding: 0.1em 0.3em;
     color: white;
   }
-  &-par{
+  &-par {
     background-color: rgb(50, 183, 108);
     color: white;
     border-radius: 15px;

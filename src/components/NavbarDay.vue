@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div class="change-week">
+      <div class="week one">1-я неделя</div>
+      <div class="week two">2-я неделя</div>
+    </div>
     <div class="menu-days">
       <button
         v-for="tab in tabs"
@@ -23,7 +27,8 @@ export default {
   data: () => {
     return {
       currentTab: "Pn",
-      tabs: ["Pn", "Vt", "Cr", "Cht", "Ptn", "Cb"]
+      tabs: ["Pn", "Vt", "Cr", "Cht", "Ptn", "Cb"],
+
     };
   },
   computed: {
@@ -48,6 +53,22 @@ button {
   cursor: pointer;
   outline: none;
 }
+.week{
+  padding: 0.1em 0.3em;
+  border-radius: 10px;
+}
+.change-week{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0.8em 2em;
+}
+.one{
+  background-color: rgb(50,183,108);
+}
+.two{
+
+}
+
 .menu-days {
   display: flex;
   justify-content: space-around;
