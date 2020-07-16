@@ -7,14 +7,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    info: null
+    info: null,
+    update: null
   },
   mutations: {
     set_info(state, info){
       console.log(info)
-      
+      state.update = info.datetable
       state.info = JSON.parse(info.ttable)
-      console.log(state.info)
     }
   },
   actions: {
