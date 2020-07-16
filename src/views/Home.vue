@@ -5,12 +5,24 @@
 </template>
 
 <script>
-import NavbarDay from '@/components/NavbarDay'
+import NavbarDay from "@/components/NavbarDay";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     NavbarDay
+  },
+  methods: {
+    Resize() {
+      window.onresize = ev => {
+        if (ev.target.innerWidth > 800) {
+          this.$router.push("/mobile");
+        }
+      };
+    }
+  },
+  mounted() {
+    this.Resize();
   }
-}
+};
 </script>

@@ -1,12 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
+    </div>-->
+    <div>
+      <div>Бакалавриат, специалитет</div>
+      <div>1 курс</div>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
+<script>
+import tableJSON from './table.json'
+
+
+export default {
+  beforeMount(){
+    // const table = JSON.parse(tableJSON)
+    console.log(tableJSON)
+  },
+  
+}
+</script>
 
 <style lang="scss">
 #app {

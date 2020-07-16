@@ -11,6 +11,11 @@ Vue.use(VueRouter)
     component: Home
   },
   {
+    path: '/mobile',
+    name: 'Mobile',
+    component: () => import('../views/Mobile.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting

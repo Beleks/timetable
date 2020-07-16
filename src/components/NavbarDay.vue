@@ -20,7 +20,8 @@
         v-on:click="currentTab = tab.t"
       >{{tab.ruT}}</button>
     </div>
-    <component :is="currentTabComponent" :currentWeek="currentWeek"></component>
+    <component :is="currentTabComponent" :currentWeek="currentWeek"
+    ></component>
   </div>
 </template>
 <script>
