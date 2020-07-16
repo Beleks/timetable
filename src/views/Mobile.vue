@@ -1,5 +1,5 @@
 <template>
-  <div>Mobile is here</div>
+  <div>Mobile</div>
 </template>
 <script>
 export default {

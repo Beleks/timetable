@@ -7,21 +7,31 @@
     <div>
       <div>Бакалавриат, специалитет</div>
       <div>1 курс</div>
+      <div>{{info}}</div>
     </div>
     <router-view />
   </div>
 </template>
 <script>
-import tableJSON from './table.json'
-
+// import tableJSON from "./table.json";
+import axios from "axios";
 
 export default {
-  beforeMount(){
-    // const table = JSON.parse(tableJSON)
-    console.log(tableJSON)
+  data: () => {
+    return {
+      info: null
+    };
   },
-  
-}
+  beforeMount() {
+    // const table = JSON.parse(tableJSON)
+    // console.log(tableJSON);
+  },
+  mounted() {
+    axios
+      .get("http://service.bielecki.ru/timetable/index.php")
+      .then(response => (this.info = response.data[0].datetable));
+  }
+};
 </script>
 
 <style lang="scss">
