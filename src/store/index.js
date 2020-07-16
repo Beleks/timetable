@@ -7,11 +7,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    info: null
   },
   mutations: {
-    // SET_SAME_INFO: (state, info){
-    //   state.info = info 
-    // }
+    set_info(state, info){
+      console.log(info)
+      
+      state.info = JSON.parse(info.ttable)
+      console.log(state.info)
+    }
   },
   actions: {
     // GET_SAME_INFO({ commit }) {
@@ -22,6 +26,13 @@ export default new Vuex.Store({
     //       commit('SET_SAME_INFO', response.data)
     //     })
     // }
+    async getTimetable({commit}){
+      let res = await axios
+      .get("http://service.bielecki.ru/timetable/index.php")
+      .then(response => (this.info = response.data[0]));
+
+      commit('set_info', res)
+    }
   },
   modules: {
   }

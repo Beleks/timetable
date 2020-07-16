@@ -27,9 +27,7 @@ export default {
     // console.log(tableJSON);
   },
   mounted() {
-    axios
-      .get("http://service.bielecki.ru/timetable/index.php")
-      .then(response => (this.info = response.data[0].datetable));
+    this.$store.dispatch("getTimetable");
   }
 };
 </script>
