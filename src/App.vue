@@ -5,16 +5,12 @@
       <router-link to="/about">About</router-link>
     </div>-->
     <div>
-      <div>Бакалавриат, специалитет</div>
-      <div>1 курс</div>
-      <div>{{info}}</div>
+      
     </div>
     <router-view />
   </div>
 </template>
 <script>
-// import tableJSON from "./table.json";
-
 export default {
   data: () => {
     return {

@@ -1,7 +1,26 @@
 <template>
   <div>
-    <div class="header"></div>
-    <div class="week?"></div>
+    <div class="header">
+      <div class="grup">
+        <select name id>
+          <option disabled value>Выберите один из вариантов</option>
+          <option>Бакалавриат, специалитет</option>
+        </select>
+        <select name id>
+          <option disabled value>Выберите курс</option>
+          <option>1 курс</option>
+        </select>
+        <select name id>
+          <option disabled value>Выберите группу</option>
+          <option>ОЗБ 579</option>
+        </select>
+        <div>{{info}}</div>
+      </div>
+    </div>
+    <div class="week">
+      <div class="one">1-я неделя</div>
+      <div class="two">2-я неделя</div>
+    </div>
     <div class="table">
       <div class="time row-6">
         <div>09:00 - 10:35</div>
@@ -44,14 +63,70 @@
         <main-para></main-para>
         <main-para></main-para>
       </div>
-      <div class="day-name"></div>
-      <div></div>
-      <div class="day-name"></div>
-      <div></div>
-      <div class="day-name"></div>
-      <div></div>
-      <div class="day-name"></div>
-      <div></div>
+      <!-- <div class="day-name row-6 border-left">
+        <div class="name">Пн</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="day-of-week row-6 border-left">
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+      </div>
+      <div class="day-name row-6 border-left">
+        <div class="name">Вт</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="day-of-week row-6 border-left">
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+      </div>
+      <div class="day-name row-6 border-left">
+        <div class="name">Пн</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="day-of-week row-6 border-left">
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+      </div>
+      <div class="day-name row-6 border-left">
+        <div class="name">Вт</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="day-of-week row-6 border-left">
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+      </div>-->
     </div>
   </div>
 </template>
@@ -64,6 +139,56 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.header{
+  display: flex;
+  margin: 0.3em 0;
+  .grup{
+    select:not(:first-child){
+      margin-left: 1em;
+    }
+  }
+}
+.week {
+  display: flex;
+  padding: 0.3em 0;
+
+  border-bottom: 2px solid rgb(50, 183, 108);
+  div:not(:first-child) {
+    margin-left: 1em;
+  }
+  div {
+    // margin-left: 1em;
+    // position: relative;
+    // margin-bottom: -2px;
+    padding: 0.2em 0.6em;
+    // border: 2px solid rgb(50, 183, 108);
+
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .one {
+    border: 1px solid rgb(50, 183, 108);
+    // border-top: 2px solid rgb(50, 183, 108);
+    // border-left: 2px solid rgb(50, 183, 108);
+    // border-right: 2px solid rgb(50, 183, 108);
+    // border-bottom: 2px solid rgb(50, 183, 108);
+    background-color: rgb(50, 183, 108);
+    color: white;
+  }
+  .two {
+    border: 1px solid rgba(94, 114, 228, 0.5);
+    // border-top: 2px solid rgb(94,114,228);
+    // border-left: 2px solid rgb(94,114,228);
+    // border-right: 2px solid rgb(94,114,228);
+    // border-bottom: 2px solid rgb(94,114,228);
+    // background-color: rgba(94, 114, 228, 0.541);
+    // background-color: rgba(94, 114, 228, 0.300);
+    // color: rgba(0, 0, 0, 0.7);
+    color: rgba(57, 82, 224, 0.74);
+  }
+}
+
+//  TABLE =======================
 .table {
   display: grid;
   grid-template-rows: minmax(auto, min-content) repeat(
@@ -78,7 +203,8 @@ export default {
 // }
 /* Применяеться только к таблице а не к элементам таблицы */
 .time {
-  margin-top: 0.3em;
+  margin-top: 0.8em;
+  position: sticky;
   div {
     display: flex;
     justify-content: center;
@@ -86,7 +212,7 @@ export default {
     margin: auto;
     // background-color: rgb(251,140,0);
     background-color: rgb(50, 183, 108);
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 0.2em 0.4em;
     color: white;
   }
