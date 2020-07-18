@@ -10,12 +10,14 @@
           <option disabled value>Выберите курс</option>
           <option>1 курс</option>
         </select>
-        <select name id>
+        <select name id v-model="selectGrup">
           <option disabled value>Выберите группу</option>
           <option>ОЗБ 579</option>
         </select>
-        <div>{{info}}</div>
+        
       </div>
+      <div class="button">Сохранить</div>
+      <div style="margin-left: 1em;">{{selectGrup}}</div>
     </div>
     <div class="week">
       <div class="one">1-я неделя</div>
@@ -133,19 +135,32 @@
 <script>
 import MainPara from "@/components/MainPara";
 export default {
+  data: () => {
+    return {
+      selectGrup: ""
+    };
+  },
   components: {
     MainPara
   }
 };
 </script>
 <style lang="scss" scoped>
-.header{
+.header {
   display: flex;
+  align-items: center;
   margin: 0.3em 0;
-  .grup{
-    select:not(:first-child){
+  .grup {
+    select:not(:first-child) {
       margin-left: 1em;
     }
+  }
+  .button {
+    margin-left: 2em;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0.1em 0.5em;
+    background-color: rgb(50, 183, 108);
   }
 }
 .week {
