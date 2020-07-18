@@ -16,6 +16,11 @@ Vue.use(VueRouter)
     component: () => import('../views/Mobile.vue')
   },
   {
+    path: '/main',
+    name: 'Main',
+    component: () => import('../views/Main.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting

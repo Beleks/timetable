@@ -16,7 +16,7 @@ export default {
     Resize() {
       window.onresize = ev => {
         if (ev.target.innerWidth > 800) {
-          this.$router.push("/mobile");
+          this.$router.push("/main");
         }
       };
     }

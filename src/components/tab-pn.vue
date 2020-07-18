@@ -39,14 +39,16 @@ export default {
 .block {
   // border: 1px solid gray;
   border-radius: 10px;
-  margin: 1em;
+  margin: 0.2em;
   display: flex;
   flex-direction: column;
 
-  padding: 0.5em;
+  padding: 0.4em;
+  font-size: 0.75rem;
   // ======================
   box-shadow: 0px 0px 16px 0px rgba(166, 166, 166, 0.27);
-  min-height: 130px;
+  // min-height: 0px;
+  // max-width: 235px;
   justify-content: space-between;
 }
 .top {
@@ -66,7 +68,7 @@ export default {
   &-par {
     background-color: rgb(50, 183, 108);
     color: white;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 0.2em 0.5em;
   }
 }
@@ -75,7 +77,7 @@ export default {
 .top-par-two {
   background-color: rgb(94,114,228);
   color: white;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 0.2em 0.5em;
 }
 .top-time-two {
@@ -91,12 +93,13 @@ export default {
 
 // =======================
 .main-section {
-  margin-top: 0.5em;
+  margin-top: 0.3em;
 }
 .footer {
   margin-top: 0.4em;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   .teacher {
     font-style: italic;
     border-bottom: 1px solid grey;

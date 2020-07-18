@@ -82,6 +82,7 @@ button {
   padding: 0.1em 0.3em;
   border-radius: 10px;
   border: 1px solid gray;
+  cursor: pointer;
 }
 .change-week {
   display: flex;

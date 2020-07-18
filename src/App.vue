@@ -14,7 +14,6 @@
 </template>
 <script>
 // import tableJSON from "./table.json";
-import axios from "axios";
 
 export default {
   data: () => {
