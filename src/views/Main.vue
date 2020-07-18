@@ -12,15 +12,15 @@
         <div></div>
       </div>
 
-      <div class="day-name row-6">
-        <div>Пн</div>
+      <div class="day-name row-6 border-left">
+        <div class="name">Пн</div>
         <div></div>
         <div></div>
         <div></div>
         <div></div>
         <div></div>
       </div>
-      <div class="day-of-week row-6">
+      <div class="day-of-week row-6 border-left">
         <main-para></main-para>
         <main-para></main-para>
         <main-para></main-para>
@@ -28,37 +28,72 @@
         <main-para></main-para>
         <main-para></main-para>
       </div>
+      <div class="day-name row-6 border-left">
+        <div class="name">Вт</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="day-of-week row-6 border-left">
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+        <main-para></main-para>
+      </div>
+      <div class="day-name"></div>
       <div></div>
+      <div class="day-name"></div>
       <div></div>
+      <div class="day-name"></div>
       <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div class="day-name"></div>
       <div></div>
     </div>
   </div>
 </template>
 <script>
-import MainPara from '@/components/MainPara'
+import MainPara from "@/components/MainPara";
 export default {
-  components:{
+  components: {
     MainPara
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .table {
   display: grid;
-  grid-template-rows: minmax(auto, min-content) repeat(5, minmax(auto, min-content) 1fr);
+  grid-template-rows: minmax(auto, min-content) repeat(
+      5,
+      minmax(auto, min-content) 1fr
+    );
+  // row-gap: 40px;
 }
+// .table:nth-child(1) {
+//   row-gap: 40px; 
+  
+// }
+/* Применяеться только к таблице а не к элементам таблицы */
+
+
 .row-6 {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
-.day-name{
+.day-name {
+  margin-top: 1em;
   max-height: 40px;
+  .name {
+    display: flex;
+    margin: 0.2em;
+    font-size: 1.2rem;
+  }
+}
+.border-left {
+  border-left: 2px solid rgb(50, 183, 108);
+  padding-left: 0.2em;
 }
 </style>
