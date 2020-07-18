@@ -4,12 +4,12 @@
     <div class="week?"></div>
     <div class="table">
       <div class="time row-6">
-        <div>09:00</div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div>09:00 - 10:35</div>
+        <div>10:45 - 12:20</div>
+        <div>13:00 - 14:35</div>
+        <div>14:45 - 16:20</div>
+        <div>16:25 - 18:00</div>
+        <div>18:05 - 19:40</div>
       </div>
 
       <div class="day-name row-6 border-left">
@@ -73,11 +73,24 @@ export default {
   // row-gap: 40px;
 }
 // .table:nth-child(1) {
-//   row-gap: 40px; 
-  
+//   row-gap: 40px;
+
 // }
 /* Применяеться только к таблице а не к элементам таблицы */
-
+.time {
+  margin-top: 0.3em;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    // background-color: rgb(251,140,0);
+    background-color: rgb(50, 183, 108);
+    border-radius: 10px;
+    padding: 0.2em 0.4em;
+    color: white;
+  }
+}
 
 .row-6 {
   display: grid;
