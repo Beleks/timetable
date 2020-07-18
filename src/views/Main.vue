@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 .table {
   display: grid;
-  grid-template-rows: 0.5fr repeat(5, 0.5fr 1fr);
+  grid-template-rows: minmax(auto, min-content) repeat(5, minmax(auto, min-content) 1fr);
 }
 .row-6 {
   display: grid;
@@ -61,5 +61,4 @@ export default {
 .day-name{
   max-height: 40px;
 }
-
 </style>
