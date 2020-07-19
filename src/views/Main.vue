@@ -10,14 +10,15 @@
           <option disabled value>Выберите курс</option>
           <option>1 курс</option>
         </select>
-        <select name id v-model="selectGrup">
+        <select name id @change="getValue($event)" v-model="grp" >
           <option disabled value>Выберите группу</option>
           <option>ОЗБ 579</option>
+          <option value="ОЗБ 600">ОЗБ 600</option>
         </select>
         
       </div>
-      <div class="button">Сохранить</div>
-      <div style="margin-left: 1em;">{{selectGrup}}</div>
+      <!-- <div class="button">Сохранить</div> -->
+      <div style="margin-left: 1em;">{{grp}}</div>
     </div>
     <div class="week">
       <div class="one">1-я неделя</div>
@@ -137,8 +138,17 @@ import MainPara from "@/components/MainPara";
 export default {
   data: () => {
     return {
-      selectGrup: ""
+      // selectGrup: "",
+      grp: localStorage.getItem('grup')
     };
+  },
+  methods:{
+    getValue(event){
+      this.selectGrup = event.target.value
+      window.localStorage.setItem('grup', this.selectGrup)
+      // console.log(this.grp)
+      
+    }
   },
   components: {
     MainPara
