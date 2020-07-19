@@ -4,12 +4,19 @@
       <div class="nuber">1</div>
       <div class="room">а.8234 геол</div>
     </div>
-    <div class="section">пр.Безопасность жизнедеятельности</div>
+    <div class="section">{{textContent}}</div>
     <div class="footer">
       <div>ХАНДУЕВА В.Д.</div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    textContent: String
+  }
+}
+</script>>
 <style lang="scss" scoped>
 .para {
   display: flex;

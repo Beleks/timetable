@@ -6,16 +6,16 @@
           <option disabled value>Выберите один из вариантов</option>
           <option>Бакалавриат, специалитет</option>
         </select>
-        <select name id>
+        <select name id v-model="krs">
           <option disabled value>Выберите курс</option>
-          <option>1 курс</option>
+          <option value="1">1 курс</option>
+          <option value="2">2 курс</option>
         </select>
-        <select name id @change="getValue($event)" v-model="grp" >
+        <select name id v-model="grp">
           <option disabled value>Выберите группу</option>
           <option>ОЗБ 579</option>
-          <option value="ОЗБ 600">ОЗБ 600</option>
+          <option>ОЗБ 600</option>
         </select>
-        
       </div>
       <!-- <div class="button">Сохранить</div> -->
       <div style="margin-left: 1em;">{{grp}}</div>
@@ -43,12 +43,13 @@
         <div></div>
       </div>
       <div class="day-of-week row-6 border-left">
+        <main-para v-for="(para, index) in main_para" :key="index"  :textContent="para"></main-para>
+        <!-- <main-para></main-para>
         <main-para></main-para>
         <main-para></main-para>
         <main-para></main-para>
         <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
+        <main-para></main-para>-->
       </div>
       <div class="day-name row-6 border-left">
         <div class="name">Вт</div>
@@ -138,16 +139,31 @@ import MainPara from "@/components/MainPara";
 export default {
   data: () => {
     return {
-      // selectGrup: "",
-      grp: localStorage.getItem('grup')
+      // path: this.$store.info[0].groups[0].table.week1.mon,
+      // main_para_2: this.$store.state.test.path
     };
   },
-  methods:{
-    getValue(event){
-      this.selectGrup = event.target.value
-      window.localStorage.setItem('grup', this.selectGrup)
-      // console.log(this.grp)
-      
+  computed: {
+    main_para() {
+      console.log(this.$store.state.test.path);
+      return this.$store.state.test.path;
+    },
+    grp: {
+      get() {
+        return this.$store.state.inputValue.grup_name;
+      },
+      set(value) {
+        this.$store.commit("set_name_grup", event.target.value);
+      }
+    },
+    krs: {
+      get() {
+        return this.$store.state.inputValue.kurs_name;
+      },
+      set(value) {
+        this.$store.commit("set_name_kurs", event.target.value);
+        console.log(event);
+      }
     }
   },
   components: {
