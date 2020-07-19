@@ -33,7 +33,7 @@
         <div>16:25 - 18:00</div>
         <div>18:05 - 19:40</div>
       </div>
-      <day-of-week v-for="day in days" :key="day.id" :h1day="day.dayRu"></day-of-week>
+      <day-of-week v-for="day in days" :key="day.id" :h1day="day.dayRu" :weekEn="day.dayEn"></day-of-week>
     </div>
   </div>
 </template>
@@ -41,18 +41,12 @@
 import DayOfWeek from "@/components/DayOfWeek";
 export default {
   data: () => {
-    return {
-      days: [
-        { dayRu: "Пн", dayEn: "mon" },
-        { dayRu: "Вт", dayEn: "tue" },
-        { dayRu: "Ср", dayEn: "wed" },
-        { dayRu: "Чт", dayEn: "thu" },
-        { dayRu: "Пт", dayEn: "fri" },
-        { dayRu: "Сб", dayEn: "sat" }
-      ]
-    };
+    return {};
   },
   computed: {
+    days() {
+      return this.$store.state.days;
+    },
     grp: {
       get() {
         return this.$store.state.inputValue.grup_name;

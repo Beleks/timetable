@@ -15,14 +15,22 @@ export default new Vuex.Store({
     },
     test: {
       path: null
-    }
+    },
+    days: [
+      { dayRu: "Пн", dayEn: "mon" },
+      { dayRu: "Вт", dayEn: "tue" },
+      { dayRu: "Ср", dayEn: "wed" },
+      { dayRu: "Чт", dayEn: "thu" },
+      { dayRu: "Пт", dayEn: "fri" },
+      { dayRu: "Сб", dayEn: "sat" }
+    ]
   },
   mutations: {
     set_info(state, info){
       console.log(info)
       state.update = info.datetable
       state.info = JSON.parse(info.ttable)
-      state.test.path = state.info[0].groups[0].table.week1.mon
+      state.test.path = state.info[0].groups[0].table.week1
     },
     set_name_grup(state, grupInfo){
       window.localStorage.setItem('grup', grupInfo)
