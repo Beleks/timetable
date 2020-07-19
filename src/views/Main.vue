@@ -33,121 +33,26 @@
         <div>16:25 - 18:00</div>
         <div>18:05 - 19:40</div>
       </div>
-
-      <div class="day-name row-6 border-left">
-        <div class="name">Пн</div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div class="day-of-week row-6 border-left">
-        <main-para v-for="(para, index) in main_para" :key="index"  :textContent="para"></main-para>
-        <!-- <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>-->
-      </div>
-      <div class="day-name row-6 border-left">
-        <div class="name">Вт</div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div class="day-of-week row-6 border-left">
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-      </div>
-      <!-- <div class="day-name row-6 border-left">
-        <div class="name">Пн</div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div class="day-of-week row-6 border-left">
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-      </div>
-      <div class="day-name row-6 border-left">
-        <div class="name">Вт</div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div class="day-of-week row-6 border-left">
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-      </div>
-      <div class="day-name row-6 border-left">
-        <div class="name">Пн</div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div class="day-of-week row-6 border-left">
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-      </div>
-      <div class="day-name row-6 border-left">
-        <div class="name">Вт</div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div class="day-of-week row-6 border-left">
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-        <main-para></main-para>
-      </div>-->
+      <day-of-week v-for="day in days" :key="day.id" :h1day="day.dayRu"></day-of-week>
     </div>
   </div>
 </template>
 <script>
-import MainPara from "@/components/MainPara";
+import DayOfWeek from "@/components/DayOfWeek";
 export default {
   data: () => {
     return {
-      // path: this.$store.info[0].groups[0].table.week1.mon,
-      // main_para_2: this.$store.state.test.path
+      days: [
+        { dayRu: "Пн", dayEn: "mon" },
+        { dayRu: "Вт", dayEn: "tue" },
+        { dayRu: "Ср", dayEn: "wed" },
+        { dayRu: "Чт", dayEn: "thu" },
+        { dayRu: "Пт", dayEn: "fri" },
+        { dayRu: "Сб", dayEn: "sat" }
+      ]
     };
   },
   computed: {
-    main_para() {
-      console.log(this.$store.state.test.path);
-      return this.$store.state.test.path;
-    },
     grp: {
       get() {
         return this.$store.state.inputValue.grup_name;
@@ -162,13 +67,10 @@ export default {
       },
       set(value) {
         this.$store.commit("set_name_kurs", event.target.value);
-        console.log(event);
       }
     }
   },
-  components: {
-    MainPara
-  }
+  components: { DayOfWeek }
 };
 </script>
 <style lang="scss" scoped>
@@ -230,22 +132,13 @@ export default {
 }
 
 //  TABLE =======================
-.table {
-  display: grid;
-  grid-template-rows: minmax(auto, min-content) repeat(
-      5,
-      minmax(auto, min-content) 1fr
-    );
-  // row-gap: 40px;
-}
-// .table:nth-child(1) {
-//   row-gap: 40px;
 
-// }
-/* Применяеться только к таблице а не к элементам таблицы */
 .time {
   margin-top: 0.8em;
-  position: sticky;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(130px, 1fr));
+  border-left: 2px solid white;
+  padding-left: 0.2em;
   div {
     display: flex;
     justify-content: center;
@@ -257,23 +150,5 @@ export default {
     padding: 0.2em 0.4em;
     color: white;
   }
-}
-
-.row-6 {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-}
-.day-name {
-  margin-top: 1em;
-  max-height: 40px;
-  .name {
-    display: flex;
-    margin: 0.2em;
-    font-size: 1.2rem;
-  }
-}
-.border-left {
-  border-left: 2px solid rgb(50, 183, 108);
-  padding-left: 0.2em;
 }
 </style>
