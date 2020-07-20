@@ -1,17 +1,15 @@
 <template>
   <div>
     <div class="day-name row-6 border-left">
-      <div class="name">{{h1day}} {{weekEn}}</div>
+      <div class="name">{{h1day}}</div>
       <div></div>
       <div></div>
       <div></div>
       <div></div>
       <div></div>
     </div>
-    <div class="day-of-week row-6 border-left">
-      <main-para :weekEn="weekEn"></main-para>
-      <!-- <main-para v-for="(day, index) in main_para" :key="index" ></main-para> -->
-      <!--  :textContent="para" -->
+    <div class="day-of-week row-6 border-left"> 
+      <main-para v-for="(myText, index) in text" :key="index" :testText="myText" :testNum="index + 1"></main-para>
     </div>
   </div>
 </template>
@@ -19,15 +17,33 @@
 import MainPara from "@/components/MainPara";
 export default {
   data: () => {
-    return {};
+    return {
+      mytestM: ["1", "2", "3", "4", "5", "6"]
+    };
   },
   props: {
     h1day: String,
     weekEn: String
   },
   computed: {
-    main_para() {
-      
+    main_para() {},
+    group() {
+      return this.$store.state.inputValue.grup_name;
+    },
+    text() {
+      let kurs = this.$store.state.inputValue.kurs_name;
+      // let searchGroup = this.$store.state.inputValue.grup_name;
+      if (this.$store.state.info !== null) {
+        let searchGroup = this.$store.state.inputValue.grup_name;
+        let massiv = this.$store.state.info[kurs - 1].groups;
+
+        let res = massiv.find(g => g.grname === searchGroup).table;
+
+        let choseWeek = this.weekEn;
+        console.log(res.week1[choseWeek]);
+
+        return res.week1[choseWeek];
+      }
     }
   },
   components: {
