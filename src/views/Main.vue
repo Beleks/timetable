@@ -8,8 +8,8 @@
         </select>
         <select name id v-model="krs">
           <option disabled value>Выберите курс</option>
-          <option>1 курс</option>
-          <option>2 курс</option>
+          <option value="1">1 курс</option>
+          <option value="2">2 курс</option>
         </select>
         <select name id v-model="grp">
           <option disabled value>Выберите группу</option>

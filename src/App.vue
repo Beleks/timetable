@@ -4,9 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>-->
-    <div>
-      
-    </div>
+    <div></div>
     <router-view />
   </div>
 </template>
@@ -18,12 +16,13 @@ export default {
     };
   },
   beforeMount() {
-    // const table = JSON.parse(tableJSON)
-    // console.log(tableJSON);
+
+    this.$store.dispatch("getTimetable");
   },
   mounted() {
-    this.$store.dispatch("getTimetable");
-  }
+
+  },
+
 };
 </script>
 

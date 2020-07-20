@@ -32,7 +32,7 @@ export default new Vuex.Store({
   },
   mutations: {
     set_info(state, info) {
-      console.log(info)
+      // console.log(info)
       state.update = info.datetable
       state.info = JSON.parse(info.ttable)
       // state.test.path = state.info[0].groups[0].table.week1
