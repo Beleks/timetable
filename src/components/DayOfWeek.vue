@@ -9,7 +9,7 @@
       <div></div>
     </div>
     <div class="day-of-week row-6 border-left">
-      <!-- <main-para v-for="(para, index) in main_para" :key="index"></main-para> -->
+      <main-para :weekEn="weekEn">{{main_para}}</main-para>
       <!--  :textContent="para" -->
     </div>
   </div>
@@ -17,25 +17,30 @@
 <script>
 import MainPara from "@/components/MainPara";
 export default {
-  // data: () => {},
+  data: () => {
+    return {};
+  },
   props: {
     h1day: String,
     weekEn: String
   },
   computed: {
     main_para() {
+      // return this.$store.state.days;
       // console.log(this.$store.state.test.path["mon"])
       // console.log(this.$store.state.test.path[`${this.WEEK}`]);
       // return this.$store.state.test.path[`${this.WEEK}`];
       // return await this.$store.state.test.path["mon"];
+      console.log(this.$store.state.days);
     }
   },
   components: {
     MainPara
   },
   mounted() {
-    console.log(this.$store.state.test.path[`${this.weekEn}`]);
-  },
+    // console.log(this.$store.state.test.path[`${this.weekEn}`]);
+    // console.log(this.$store.state.test.path["mon"]);
+  }
 };
 </script>
 <style lang="scss" scoped>

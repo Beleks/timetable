@@ -1,7 +1,7 @@
 <template>
   <div class="para">
     <div class="header">
-      <div class="nuber">1</div>
+      <div class="nuber">{{weekEn}} {{kurs}}</div>
       <div class="room">а.8234 геол</div>
     </div>
     <div class="section">{{textContent}}</div>
@@ -13,7 +13,16 @@
 <script>
 export default {
   props: {
-    textContent: String
+    textContent: String,
+    weekEn: String
+  },
+  computed: {
+    kurs(){
+      return this.$store.state.inputValue.kurs_name
+    },
+    group(){
+      return this.$store.state.inputValue.grup_name
+    }
   }
 }
 </script>>

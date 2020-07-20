@@ -13,9 +13,14 @@ export default new Vuex.Store({
       kurs_name: localStorage.getItem('kurs'),
       grup_name: localStorage.getItem('grup')
     },
-    test: {
-      path: null
-    },
+    test_db: [
+      {course: "1 курс", groups: []},
+      {course: "1 курс", groups: []},
+      {course: "1 курс", groups: []},
+      {course: "1 курс", groups: []},
+      {course: "1 курс", groups: []},
+      {course: "1 курс", groups: []},
+    ],
     days: [
       { dayRu: "Пн", dayEn: "mon" },
       { dayRu: "Вт", dayEn: "tue" },
@@ -26,17 +31,17 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    set_info(state, info){
+    set_info(state, info) {
       console.log(info)
       state.update = info.datetable
       state.info = JSON.parse(info.ttable)
-      state.test.path = state.info[0].groups[0].table.week1
+      // state.test.path = state.info[0].groups[0].table.week1
     },
-    set_name_grup(state, grupInfo){
+    set_name_grup(state, grupInfo) {
       window.localStorage.setItem('grup', grupInfo)
       state.inputValue.grup_name = grupInfo
     },
-    set_name_kurs(state, kursInfo){
+    set_name_kurs(state, kursInfo) {
       window.localStorage.setItem('kurs', kursInfo)
       state.inputValue.kurs_name = kursInfo
     },
@@ -50,10 +55,10 @@ export default new Vuex.Store({
     //       commit('SET_SAME_INFO', response.data)
     //     })
     // }
-    async getTimetable({commit}){
+    async getTimetable({ commit }) {
       let res = await axios
-      .get("http://service.bielecki.ru/timetable/index.php")
-      .then(response => (this.info = response.data[0]));
+        .get("http://service.bielecki.ru/timetable/index.php")
+        .then(response => (this.info = response.data[0]));
 
       commit('set_info', res)
     }
