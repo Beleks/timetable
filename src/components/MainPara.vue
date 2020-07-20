@@ -25,14 +25,18 @@ export default {
     },
     text() {
       let kurs = this.$store.state.inputValue.kurs_name;
-      let searchGroup = this.$store.state.inputValue.grup_name;
+      // let searchGroup = this.$store.state.inputValue.grup_name;
       if (this.$store.state.info !== null) {
         let searchGroup = this.$store.state.inputValue.grup_name;
         let massiv = this.$store.state.info[kurs - 1].groups;
         console.log(searchGroup)
         let res = massiv.find(g => g.grname === searchGroup).table
-        console.log(res)
-        return res;
+        // console.log(this.weekEn)
+        let choseWeek = this.weekEn
+        console.log(res.week1[choseWeek])
+        // res.week1.`${this.weekEn}`
+
+        return res.week1[choseWeek];
         // masivGroup = 
         // let getTable = this.$store.state.info[kurs - 1].groups.find(group => group.grname === searchGroup).table
         // return getTable
