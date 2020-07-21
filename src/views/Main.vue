@@ -10,11 +10,14 @@
           <option disabled value>Выберите курс</option>
           <option value="1">1 курс</option>
           <option value="2">2 курс</option>
+          <option value="3">3 курс</option>
+          <option value="4">4 курс</option>
+          <option value="5">5 курс</option>
+          <option value="6">6 курс</option>
         </select>
         <select name id v-model="grp">
           <option disabled value>Выберите группу</option>
-          <option>ОЗБ 579</option>
-          <option>ОЗБ 600</option>
+          <option v-for="(option, index) in massivGroup" :key="index">{{option}}</option>
         </select>
       </div>
       <!-- <div class="button">Сохранить</div> -->
@@ -44,6 +47,20 @@ export default {
     return {};
   },
   computed: {
+    massivGroup() {
+      let choseKurs = this.$store.state.inputValue.kurs_name;
+      if (this.$store.state.info !== null) {
+        let MAS = this.$store.state.info[choseKurs - 1].groups;
+        let arr = []
+        MAS.forEach(element => {
+          arr.push(element.grname)
+        });
+        this.$store.commit('set_group_after_arr', arr)
+        return arr
+        // console.log(MAS)
+        // return this.$store.info[choseKurs - 1].groups
+      }
+    },
     days() {
       return this.$store.state.days;
     },

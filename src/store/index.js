@@ -14,12 +14,12 @@ export default new Vuex.Store({
       grup_name: localStorage.getItem('grup')
     },
     test_db: [
-      {course: "1 курс", groups: []},
-      {course: "1 курс", groups: []},
-      {course: "1 курс", groups: []},
-      {course: "1 курс", groups: []},
-      {course: "1 курс", groups: []},
-      {course: "1 курс", groups: []},
+      { course: "1 курс", groups: [] },
+      { course: "1 курс", groups: [] },
+      { course: "1 курс", groups: [] },
+      { course: "1 курс", groups: [] },
+      { course: "1 курс", groups: [] },
+      { course: "1 курс", groups: [] },
     ],
     days: [
       { dayRu: "Пн", dayEn: "mon" },
@@ -45,6 +45,11 @@ export default new Vuex.Store({
       window.localStorage.setItem('kurs', kursInfo)
       state.inputValue.kurs_name = kursInfo
     },
+    set_group_after_arr(state, arr) {
+      window.localStorage.setItem('grup', arr[0])
+      state.inputValue.grup_name = arr[0]
+    }
+
   },
   actions: {
     // GET_SAME_INFO({ commit }) {

@@ -1,7 +1,7 @@
 <template>
   <div class="para">
     <div class="header">
-      <div class="nuber">{{testNum}} </div>
+      <div class="nuber">{{testNum}}</div>
       <div class="room">а.8234 геол</div>
     </div>
     <div class="section">{{testText}}</div>
@@ -18,32 +18,8 @@ export default {
     testText: String,
     testNum: Number
   },
-  computed: {
-    // kurs() {
-    //   return this.$store.state.inputValue.kurs_name;
-    // },
-    // group() {
-    //   return this.$store.state.inputValue.grup_name;
-    // },
-    // text() {
-    //   let kurs = this.$store.state.inputValue.kurs_name;
-    //   // let searchGroup = this.$store.state.inputValue.grup_name;
-    //   if (this.$store.state.info !== null) {
-    //     let searchGroup = this.$store.state.inputValue.grup_name;
-    //     let massiv = this.$store.state.info[kurs - 1].groups;
-    //     console.log(searchGroup);
-    //     let res = massiv.find(g => g.grname === searchGroup).table;
-
-    //     let choseWeek = this.weekEn;
-    //     console.log(res.week1[choseWeek]);
-
-    //     return res.week1[choseWeek];
-    //   }
-    // }
-  },
-  beforeCreate() {
-    // this.$store.dispatch("getTimetable");
-  }
+  computed: {},
+  beforeCreate() {}
 };
 </script>>
 <style lang="scss" scoped>

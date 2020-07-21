@@ -8,8 +8,13 @@
       <div></div>
       <div></div>
     </div>
-    <div class="day-of-week row-6 border-left"> 
-      <main-para v-for="(myText, index) in text" :key="index" :testText="myText" :testNum="index + 1"></main-para>
+    <div class="day-of-week row-6 border-left">
+      <main-para
+        v-for="(myText, index) in text"
+        :key="index"
+        :testText="myText"
+        :testNum="index + 1"
+      ></main-para>
     </div>
   </div>
 </template>
@@ -32,7 +37,6 @@ export default {
     },
     text() {
       let kurs = this.$store.state.inputValue.kurs_name;
-      // let searchGroup = this.$store.state.inputValue.grup_name;
       if (this.$store.state.info !== null) {
         let searchGroup = this.$store.state.inputValue.grup_name;
         let massiv = this.$store.state.info[kurs - 1].groups;
@@ -49,10 +53,7 @@ export default {
   components: {
     MainPara
   },
-  mounted() {
-    // console.log(this.$store.state.test.path[`${this.weekEn}`]);
-    // console.log(this.$store.state.test.path["mon"]);
-  }
+  mounted() {}
 };
 </script>
 <style lang="scss" scoped>
