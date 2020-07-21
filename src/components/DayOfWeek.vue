@@ -44,7 +44,6 @@ export default {
         let res = massiv.find(g => g.grname === searchGroup).table;
 
         let choseWeek = this.weekEn;
-        console.log(res.week1[choseWeek]);
 
         return res.week1[choseWeek];
       }

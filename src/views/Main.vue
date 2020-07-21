@@ -51,12 +51,12 @@ export default {
       let choseKurs = this.$store.state.inputValue.kurs_name;
       if (this.$store.state.info !== null) {
         let MAS = this.$store.state.info[choseKurs - 1].groups;
-        let arr = []
+        let arr = [];
         MAS.forEach(element => {
-          arr.push(element.grname)
+          arr.push(element.grname);
         });
-        this.$store.commit('set_group_after_arr', arr)
-        return arr
+        this.$store.commit("set_group_after_arr", arr);
+        return arr;
         // console.log(MAS)
         // return this.$store.info[choseKurs - 1].groups
       }
@@ -79,9 +79,24 @@ export default {
       set(value) {
         this.$store.commit("set_name_kurs", event.target.value);
       }
+    },
+    
+  },
+  components: { DayOfWeek },
+  methods: {
+    Resize() {
+      window.onresize = ev => {
+        // console.log(ev.target.innerWidth)
+        if (ev.target.innerWidth <= 800) {
+          console.log(ev)
+          this.$router.push("/main");
+        }
+      };
     }
   },
-  components: { DayOfWeek }
+  mounted() {
+    this.Resize();
+  }
 };
 </script>
 <style lang="scss" scoped>

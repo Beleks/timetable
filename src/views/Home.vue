@@ -15,8 +15,10 @@ export default {
   methods: {
     Resize() {
       window.onresize = ev => {
+        // console.log(ev.target.innerWidth)
         if (ev.target.innerWidth > 800) {
-          this.$router.push("/main");
+          console.log(ev)
+          this.$router.push("/");
         }
       };
     }
