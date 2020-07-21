@@ -17,14 +17,14 @@ export default {
       window.onresize = ev => {
         // console.log(ev.target.innerWidth)
         if (ev.target.innerWidth > 800) {
-          console.log(ev)
           this.$router.push("/");
         }
       };
-    }
+    },
   },
-  mounted() {
-    this.Resize();
+  // добавить mounted
+  mounted(){
+    this.Resize()
   }
 };
 </script>

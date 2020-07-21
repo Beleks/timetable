@@ -15,14 +15,38 @@ export default {
       info: null
     };
   },
-  beforeMount() {
-
+  beforeMount() {},
+  mounted() {},
+  methods: {
+    getSize(string) {
+      console.log(string);
+    }
+    // ResizeTest() {
+    //   window.onresize = ev => {
+    //     // console.log(ev.target.innerWidth)
+    //     if (ev.target.innerWidth > 800) {
+    //       this.$router.push("/");
+    //     }
+    //   };
+    // }
+  },
+  beforeCreate: function() {
+    if (document.documentElement.clientWidth > 800) {
+      this.$router.push("/");
+    } else if (document.documentElement.clientWidth <= 800) {
+      this.$router.push("/home");
+    }
     this.$store.dispatch("getTimetable");
   },
-  mounted() {
-
+  created: function() {
+    this.getSize("created");
   },
-
+  mounted() {
+    this.getSize("mounted");
+  },
+  beforeMount: function() {
+    this.getSize("beforeMount");
+  }
 };
 </script>
 

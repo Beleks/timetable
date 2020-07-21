@@ -7,7 +7,7 @@ Vue.use(VueRouter)
   const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Main',
     component: () => import('../views/Main.vue')
   },
   {
@@ -16,8 +16,8 @@ Vue.use(VueRouter)
     component: () => import('../views/Mobile.vue')
   },
   {
-    path: '/main',
-    name: 'Main',
+    path: '/home',
+    name: 'home',
     component: () => import('../views/Home.vue')
   },
   {
