@@ -46,6 +46,9 @@ export default {
   data: () => {
     return {};
   },
+  methods: {
+
+  },
   computed: {
     massivGroup() {
       if (
@@ -59,9 +62,13 @@ export default {
         MAS.forEach(element => {
           arr.push(element.grname);
         });
-
-        this.$store.commit("set_group_after_arr", arr);
-        console.log(this.$store.state.inputValue.grup_name);
+        
+        if(!arr.includes(this.$store.state.inputValue.grup_name)){
+          console.log(arr[0], 'элемент массива')
+          this.$store.commit("set_group_after_arr", arr);
+        }
+        
+        // console.log(this.$store.state.inputValue.grup_name);
         return arr;
       }
     },
