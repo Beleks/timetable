@@ -48,17 +48,21 @@ export default {
   },
   computed: {
     massivGroup() {
-      let choseKurs = this.$store.state.inputValue.kurs_name;
-      if (this.$store.state.info !== null) {
+      if (
+        this.$store.state.info !== null &&
+        this.$store.state.inputValue.kurs_name !== null
+      ) {
+        console.log(this.$store.state.inputValue.grup_name);
+        let choseKurs = this.$store.state.inputValue.kurs_name;
         let MAS = this.$store.state.info[choseKurs - 1].groups;
         let arr = [];
         MAS.forEach(element => {
           arr.push(element.grname);
         });
+
         this.$store.commit("set_group_after_arr", arr);
+        console.log(this.$store.state.inputValue.grup_name);
         return arr;
-        // console.log(MAS)
-        // return this.$store.info[choseKurs - 1].groups
       }
     },
     days() {
@@ -66,7 +70,15 @@ export default {
     },
     grp: {
       get() {
-        return this.$store.state.inputValue.grup_name;
+        // console.log(this.$store.state.inputValue.grup_name);
+        if (this.$store.state.inputValue.grup_name == null) {
+          // console.log("Нету", "Группа");
+          // console.log(this.$store.state.info, "ИНФО ");
+          // window.localStorage.setItem("grup", "ОЗБ 579");
+          // return "ОЗБ 579";
+        } else {
+          return this.$store.state.inputValue.grup_name;
+        }
       },
       set(value) {
         this.$store.commit("set_name_grup", event.target.value);
@@ -74,13 +86,18 @@ export default {
     },
     krs: {
       get() {
-        return this.$store.state.inputValue.kurs_name;
+        if (this.$store.state.inputValue.kurs_name == null) {
+          // window.localStorage.setItem("kurs", "1");
+          this.$store.commit("set_name_kurs", "1");
+          return "1";
+        } else {
+          return this.$store.state.inputValue.kurs_name;
+        }
       },
       set(value) {
         this.$store.commit("set_name_kurs", event.target.value);
       }
-    },
-    
+    }
   },
   components: { DayOfWeek },
   methods: {

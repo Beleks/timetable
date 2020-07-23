@@ -32,10 +32,10 @@ export default new Vuex.Store({
   },
   mutations: {
     set_info(state, info) {
-      // console.log(info)
+
       state.update = info.datetable
       state.info = JSON.parse(info.ttable)
-      // state.test.path = state.info[0].groups[0].table.week1
+
     },
     set_name_grup(state, grupInfo) {
       window.localStorage.setItem('grup', grupInfo)
@@ -48,7 +48,7 @@ export default new Vuex.Store({
     set_group_after_arr(state, arr) {
       window.localStorage.setItem('grup', arr[0])
       state.inputValue.grup_name = arr[0]
-    }
+    },
 
   },
   actions: {
@@ -60,7 +60,7 @@ export default new Vuex.Store({
     //       commit('SET_SAME_INFO', response.data)
     //     })
     // }
-    async getTimetable({ commit }) {
+    async getTimetable({ commit, state }) {
       let res = await axios
         .get("http://service.bielecki.ru/timetable/index.php")
         .then(response => (this.info = response.data[0]));
