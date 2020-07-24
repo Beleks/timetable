@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div :class="{border_left_green: green,
+    border_left_blue: !green}">
     <div class="day-name row-6 border_left">
       <div class="name">{{h1day}}</div>
       <div></div>
@@ -8,13 +9,8 @@
       <div></div>
       <div></div>
     </div>
-    <div
-      class="day-of-week row-6 border_left"
-      :class="{border_left_green: green,
-    border_left_blue: !green}"
-    >
+    <div class="day-of-week row-6 border_left">
       <main-para
-        
         v-for="(myText, index) in text"
         :para_green="para_green"
         :key="index"
@@ -40,7 +36,8 @@ export default {
     // green_border: String
   },
   computed: {
-    para_green() { // Ипарвить цвет
+    para_green() {
+      // Ипарвить цвет
       return this.green;
     },
     main_para() {},
@@ -57,7 +54,6 @@ export default {
 
         let choseWeekDay = this.weekEn;
         let choseWeek = this.choseWeek;
-        console.log(choseWeek);
 
         return res[choseWeek][choseWeekDay];
       }
@@ -91,6 +87,6 @@ export default {
   border-left: 2px solid rgb(50, 183, 108);
 }
 .border_left_blue {
-  border-left: 2px solid rgba(57, 82, 224, 0.74);
+  border-left: 2px solid rgb(87, 105, 223);
 }
 </style>

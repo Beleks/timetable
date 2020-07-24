@@ -23,7 +23,11 @@
       <!-- <div class="button">Сохранить</div> -->
       <div style="margin-left: 1em;">{{grp}}</div>
     </div>
-    <div class="week">
+    <div
+      class="week"
+      :class="{borderGreen: currentWeek === one,
+    borderBlue: currentWeek === two}"
+    >
       <div
         class="one"
         :class="{activeWeekOne: currentWeek === one }"
@@ -168,11 +172,17 @@ export default {
     padding: 0.1em 0.5em;
   }
 }
+.borderGreen {
+  border-bottom: 2px solid rgb(50, 183, 108);
+}
+.borderBlue{
+  border-bottom: 2px solid rgb(87, 105, 223);
+}
 .week {
   display: flex;
   padding: 0.3em 0;
 
-  border-bottom: 2px solid rgb(50, 183, 108);
+  // border-bottom: 2px solid rgb(50, 183, 108);
   div:not(:first-child) {
     margin-left: 1em;
   }
@@ -219,10 +229,13 @@ export default {
     justify-content: center;
     align-items: center;
     margin: auto;
-    background-color: rgba(70, 90, 220, 0.91);
+    background-color: rgba(251, 138, 0, 0.801);
     border-radius: 5px;
     padding: 0.2em 0.4em;
     color: white;
+  }
+  .div_green {
+    background-color: rgb(50, 183, 108);
   }
 }
 
