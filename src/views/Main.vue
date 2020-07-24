@@ -229,7 +229,7 @@ export default {
     justify-content: center;
     align-items: center;
     margin: auto;
-    background-color: rgba(251, 138, 0, 0.801);
+    background-color: rgba(251, 138, 0, 0.800);
     border-radius: 5px;
     padding: 0.2em 0.4em;
     color: white;

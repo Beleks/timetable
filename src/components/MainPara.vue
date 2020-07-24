@@ -52,7 +52,7 @@ export default {
     }
 
     .room {
-      background-color: rgb(251, 140, 0);
+      background-color: rgba(251, 138, 0, 0.800);
       border-radius: 10px;
       padding: 0.1em 0.3em;
       color: white;
