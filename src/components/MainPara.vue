@@ -1,7 +1,11 @@
 <template>
   <div class="para">
     <div class="header">
-      <div class="nuber">{{testNum}}</div>
+      <div
+        class="number"
+        :class="{number_green: para_green,
+    number_blue: !para_green}"
+      >{{testNum}}</div>
       <div class="room">а.8234 геол</div>
     </div>
     <div class="section">{{testText}}</div>
@@ -16,10 +20,11 @@ export default {
     textContent: String,
     weekEn: String,
     testText: String,
-    testNum: Number
+    testNum: Number,
+    para_green: Boolean,
   },
   computed: {},
-  beforeCreate() {}
+  beforeCreate() {},
 };
 </script>>
 <style lang="scss" scoped>
@@ -39,12 +44,13 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .nuber {
-      background-color: rgb(50, 183, 108);
+    .number {
+      // background-color: rgba(70, 90, 220, 0.91);
       color: white;
       border-radius: 10px;
       padding: 0.2em 0.5em;
     }
+
     .room {
       background-color: rgb(251, 140, 0);
       border-radius: 10px;
@@ -65,5 +71,11 @@ export default {
       border-bottom: 1px solid grey;
     }
   }
+}
+.number_green {
+  background-color: rgb(50, 183, 108);
+}
+.number_blue {
+  background-color: rgba(70, 90, 220, 0.91);
 }
 </style>

@@ -24,8 +24,16 @@
       <div style="margin-left: 1em;">{{grp}}</div>
     </div>
     <div class="week">
-      <div class="one">1-я неделя</div>
-      <div class="two">2-я неделя</div>
+      <div
+        class="one"
+        :class="{activeWeekOne: currentWeek === one }"
+        @click="currentWeek = one"
+      >1-я неделя</div>
+      <div
+        class="two"
+        :class="{activeWeekTwo: currentWeek === two }"
+        @click="currentWeek = two"
+      >2-я неделя</div>
     </div>
     <div class="table">
       <div class="time row-6">
@@ -36,7 +44,26 @@
         <div>16:25 - 18:00</div>
         <div>18:05 - 19:40</div>
       </div>
-      <day-of-week v-for="day in days" :key="day.id" :h1day="day.dayRu" :weekEn="day.dayEn"></day-of-week>
+      <div v-if="currentWeek == 'one'">
+        <day-of-week
+          :green="true"
+          v-for="day in days"
+          :key="day.id"
+          :h1day="day.dayRu"
+          :weekEn="day.dayEn"
+          :choseWeek="'week1'"
+        ></day-of-week>
+      </div>
+      <div v-if="currentWeek == 'two'">
+        <day-of-week
+          :green="false"
+          v-for="day in days"
+          :key="day.id"
+          :h1day="day.dayRu"
+          :weekEn="day.dayEn"
+          :choseWeek="'week2'"
+        ></day-of-week>
+      </div>
     </div>
   </div>
 </template>
@@ -44,11 +71,13 @@
 import DayOfWeek from "@/components/DayOfWeek";
 export default {
   data: () => {
-    return {};
+    return {
+      one: "one",
+      two: "two",
+      currentWeek: "one",
+    };
   },
-  methods: {
-
-  },
+  methods: {},
   computed: {
     massivGroup() {
       if (
@@ -59,15 +88,15 @@ export default {
         let choseKurs = this.$store.state.inputValue.kurs_name;
         let MAS = this.$store.state.info[choseKurs - 1].groups;
         let arr = [];
-        MAS.forEach(element => {
+        MAS.forEach((element) => {
           arr.push(element.grname);
         });
-        
-        if(!arr.includes(this.$store.state.inputValue.grup_name)){
-          console.log(arr[0], 'элемент массива')
+
+        if (!arr.includes(this.$store.state.inputValue.grup_name)) {
+          console.log(arr[0], "элемент массива");
           this.$store.commit("set_group_after_arr", arr);
         }
-        
+
         // console.log(this.$store.state.inputValue.grup_name);
         return arr;
       }
@@ -89,7 +118,7 @@ export default {
       },
       set(value) {
         this.$store.commit("set_name_grup", event.target.value);
-      }
+      },
     },
     krs: {
       get() {
@@ -103,23 +132,23 @@ export default {
       },
       set(value) {
         this.$store.commit("set_name_kurs", event.target.value);
-      }
-    }
+      },
+    },
   },
   components: { DayOfWeek },
   methods: {
     Resize() {
-      window.onresize = ev => {
+      window.onresize = (ev) => {
         // console.log(ev.target.innerWidth)
         if (ev.target.innerWidth <= 800) {
           this.$router.push("/home");
         }
       };
-    }
+    },
   },
   mounted() {
     this.Resize();
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -137,7 +166,6 @@ export default {
     border-radius: 5px;
     cursor: pointer;
     padding: 0.1em 0.5em;
-    background-color: rgb(50, 183, 108);
   }
 }
 .week {
@@ -159,24 +187,22 @@ export default {
     cursor: pointer;
   }
   .one {
+    border: 1px solid rgba(50, 183, 108, 0.5);
+    color: rgb(50, 183, 108);
+  }
+  .activeWeekOne {
     border: 1px solid rgb(50, 183, 108);
-    // border-top: 2px solid rgb(50, 183, 108);
-    // border-left: 2px solid rgb(50, 183, 108);
-    // border-right: 2px solid rgb(50, 183, 108);
-    // border-bottom: 2px solid rgb(50, 183, 108);
     background-color: rgb(50, 183, 108);
     color: white;
   }
   .two {
     border: 1px solid rgba(94, 114, 228, 0.5);
-    // border-top: 2px solid rgb(94,114,228);
-    // border-left: 2px solid rgb(94,114,228);
-    // border-right: 2px solid rgb(94,114,228);
-    // border-bottom: 2px solid rgb(94,114,228);
-    // background-color: rgba(94, 114, 228, 0.541);
-    // background-color: rgba(94, 114, 228, 0.300);
-    // color: rgba(0, 0, 0, 0.7);
-    color: rgba(57, 82, 224, 0.74);
+    color: rgb(87, 105, 223);
+  }
+  .activeWeekTwo {
+    border: 1px solid rgba(94, 114, 228, 0.5);
+    background-color: rgb(87, 105, 223);
+    color: white;
   }
 }
 
@@ -193,11 +219,15 @@ export default {
     justify-content: center;
     align-items: center;
     margin: auto;
-    // background-color: rgb(251,140,0);
-    background-color: rgb(50, 183, 108);
+    background-color: rgba(70, 90, 220, 0.91);
     border-radius: 5px;
     padding: 0.2em 0.4em;
     color: white;
   }
+}
+
+// ----------------- Цвета неедль
+.green_border {
+  border-left: 2px solid rgb(50, 183, 108);
 }
 </style>

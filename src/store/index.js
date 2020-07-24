@@ -7,20 +7,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+
     info: null,
     update: null,
     inputValue: {
       kurs_name: localStorage.getItem('kurs'),
       grup_name: localStorage.getItem('grup')
     },
-    test_db: [
-      { course: "1 курс", groups: [] },
-      { course: "1 курс", groups: [] },
-      { course: "1 курс", groups: [] },
-      { course: "1 курс", groups: [] },
-      { course: "1 курс", groups: [] },
-      { course: "1 курс", groups: [] },
-    ],
     days: [
       { dayRu: "Пн", dayEn: "mon" },
       { dayRu: "Вт", dayEn: "tue" },
@@ -28,7 +21,8 @@ export default new Vuex.Store({
       { dayRu: "Чт", dayEn: "thu" },
       { dayRu: "Пт", dayEn: "fri" },
       { dayRu: "Сб", dayEn: "sat" }
-    ]
+    ],
+    green: true
   },
   mutations: {
     set_info(state, info) {
