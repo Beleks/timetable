@@ -10,8 +10,8 @@
       >{{testNum}}</div>
       <div class="time"></div>
     </div>
-    <div class="main-text">{{testText}}</div>
-    <div class="footer"></div>
+    <div class="main-text">{{content.para}}</div>
+    <div class="footer">{{content.prepod}}</div>
   </div>
 </template>
 <script>
@@ -27,9 +27,45 @@ export default {
     choseWeek() {
       return this.$store.state.week;
     },
-    content(){
-      
-    }
+    content() {
+      let str = this.testText;
+      console.log(str);
+      if (str === "_") {
+        return {
+          prepod: "",
+          para: "Пары нету :)",
+        }
+      } else {
+        let resultOne = str.match(/[.]/);
+        let resultTwo = str.split(/[.]/)[0].length;
+        console.log(str.slice(resultTwo + 1));
+
+        let resultSTR = str.slice(resultTwo + 1); // Строка без 'пр.' 'лек.'
+
+        let resultMassiv = resultSTR.split(" ");
+
+        let prepodMassiv = [];
+
+        resultMassiv.forEach((element, index) => {
+          let el = element.match(/[А-Я][.][А-Я][.]/g);
+          console.log(el);
+          if (el !== null) {
+            prepodMassiv = [];
+            console.log(el[0]);
+
+            prepodMassiv.push(resultMassiv[index - 1]);
+            prepodMassiv.push(el[0]);
+
+            return prepodMassiv
+          } else {
+          }
+        });
+
+        return {
+          prepod: 'Препод'
+        };
+      }
+    },
   },
 };
 </script>
@@ -40,10 +76,10 @@ export default {
   flex-direction: column;
 
   // font-size: 0.78rem;
-  min-height: 80px;
+  min-height: 70px;
   border: 10px;
   padding: 0.3em;
-  margin: 0.2em;
+  margin: 0.4em 0.2em;
 
   box-shadow: 0px 0px 16px 0px rgba(166, 166, 166, 0.27);
   border-radius: 10px;
