@@ -2,20 +2,21 @@
   <div>
     <select-mobile></select-mobile>
     <weeks-mobile></weeks-mobile>
+    <days-mobile></days-mobile>
   </div>
 </template>
 
 <script>
-import NavbarDay from "@/components/NavbarDay";
 import SelectMobile from "@/components/SelectMobile";
 import WeeksMobile from "@/components/WeeksMobile";
+import DaysMobile from '@/components/DaysMobile'
 
 export default {
   name: "Home",
   components: {
-    NavbarDay,
     SelectMobile,
     WeeksMobile,
+    DaysMobile,
   },
   methods: {
     Resize() {

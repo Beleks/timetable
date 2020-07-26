@@ -15,6 +15,7 @@ export default new Vuex.Store({
       grup_name: localStorage.getItem('grup')
     },
     week: localStorage.getItem('week'),
+    choseDay: localStorage.getItem('day'),
     days: [
       { dayRu: "Пн", dayEn: "mon" },
       { dayRu: "Вт", dayEn: "tue" },
@@ -51,6 +52,14 @@ export default new Vuex.Store({
     set_first_week(state, week) {
       window.localStorage.setItem('week', week)
       state.week = week
+    },
+    set_first_day(state, day){
+      window.localStorage.setItem('day', day)
+      state.choseDay = day
+    },
+    set_day(state, day){
+      window.localStorage.setItem('day', day)
+      state.choseDay = day
     }
   },
   actions: {

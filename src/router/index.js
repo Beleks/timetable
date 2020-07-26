@@ -11,11 +11,6 @@ Vue.use(VueRouter)
     component: () => import('../views/Main.vue')
   },
   {
-    path: '/mobile',
-    name: 'Mobile',
-    component: () => import('../views/Mobile.vue')
-  },
-  {
     path: '/home',
     name: 'home',
     component: () => import('../views/Home.vue')

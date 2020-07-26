@@ -98,8 +98,6 @@ export default {
         if (!arr.includes(this.$store.state.inputValue.grup_name)) {
           this.$store.commit("set_group_after_arr", arr);
         }
-
-        // console.log(this.$store.state.inputValue.grup_name);
         return arr;
       }
     },
@@ -108,12 +106,7 @@ export default {
     },
     grp: {
       get() {
-        // console.log(this.$store.state.inputValue.grup_name);
         if (this.$store.state.inputValue.grup_name == null) {
-          // console.log("Нету", "Группа");
-          // console.log(this.$store.state.info, "ИНФО ");
-          // window.localStorage.setItem("grup", "ОЗБ 579");
-          // return "ОЗБ 579";
         } else {
           return this.$store.state.inputValue.grup_name;
         }
@@ -173,7 +166,7 @@ export default {
 .borderGreen {
   border-bottom: 2px solid rgb(50, 183, 108);
 }
-.borderBlue{
+.borderBlue {
   border-bottom: 2px solid rgb(87, 105, 223);
 }
 .week {
@@ -227,7 +220,7 @@ export default {
     justify-content: center;
     align-items: center;
     margin: auto;
-    background-color: rgba(251, 138, 0, 0.800);
+    background-color: rgba(251, 138, 0, 0.8);
     border-radius: 5px;
     padding: 0.2em 0.4em;
     color: white;
