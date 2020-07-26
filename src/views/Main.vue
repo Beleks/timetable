@@ -8,12 +8,12 @@
         </select>
         <select name id v-model="krs">
           <option disabled value>Выберите курс</option>
-          <option value="1">1 курс</option>
-          <option value="2">2 курс</option>
-          <option value="3">3 курс</option>
-          <option value="4">4 курс</option>
-          <option value="5">5 курс</option>
-          <option value="6">6 курс</option>
+          <option value="0">1 курс</option>
+          <option value="1">2 курс</option>
+          <option value="2">3 курс</option>
+          <option value="3">4 курс</option>
+          <option value="4">5 курс</option>
+          <option value="5">6 курс</option>
         </select>
         <select name id v-model="grp">
           <option disabled value>Выберите группу</option>
@@ -88,16 +88,14 @@ export default {
         this.$store.state.info !== null &&
         this.$store.state.inputValue.kurs_name !== null
       ) {
-        console.log(this.$store.state.inputValue.grup_name);
         let choseKurs = this.$store.state.inputValue.kurs_name;
-        let MAS = this.$store.state.info[choseKurs - 1].groups;
+        let MAS = this.$store.state.info[choseKurs].groups;
         let arr = [];
         MAS.forEach((element) => {
           arr.push(element.grname);
         });
 
         if (!arr.includes(this.$store.state.inputValue.grup_name)) {
-          console.log(arr[0], "элемент массива");
           this.$store.commit("set_group_after_arr", arr);
         }
 
@@ -128,8 +126,8 @@ export default {
       get() {
         if (this.$store.state.inputValue.kurs_name == null) {
           // window.localStorage.setItem("kurs", "1");
-          this.$store.commit("set_name_kurs", "1");
-          return "1";
+          this.$store.commit("set_name_kurs", "0");
+          return "0";
         } else {
           return this.$store.state.inputValue.kurs_name;
         }

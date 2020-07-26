@@ -52,7 +52,7 @@ export default {
     }
 
     .room {
-      background-color: rgba(251, 138, 0, 0.800);
+      background-color: rgba(251, 138, 0, 0.8);
       border-radius: 10px;
       padding: 0.1em 0.3em;
       color: white;
@@ -78,4 +78,9 @@ export default {
 .number_blue {
   background-color: rgba(70, 90, 220, 0.91);
 }
+// @media (min-width: 1400px) {
+//   .section {
+//     font-size: 0.9rem;
+//   }
+// }
 </style>

@@ -1,16 +1,17 @@
 <template>
   <div>
-    <navbar-day></navbar-day>
+    <select-mobile></select-mobile>
   </div>
 </template>
 
 <script>
 import NavbarDay from "@/components/NavbarDay";
+import SelectMobile from '@/components/SelectMobile'
 
 export default {
   name: "Home",
   components: {
-    NavbarDay
+    NavbarDay, SelectMobile
   },
   methods: {
     Resize() {

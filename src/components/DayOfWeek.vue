@@ -48,7 +48,7 @@ export default {
       let kurs = this.$store.state.inputValue.kurs_name;
       if (this.$store.state.info !== null) {
         let searchGroup = this.$store.state.inputValue.grup_name;
-        let massiv = this.$store.state.info[kurs - 1].groups;
+        let massiv = this.$store.state.info[kurs].groups;
 
         let res = massiv.find((g) => g.grname === searchGroup).table;
 
