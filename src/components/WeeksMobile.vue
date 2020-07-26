@@ -2,13 +2,13 @@
   <div class="weeks">
     <div
       class="one"
-      :class="{activeWeekOne: getWeek === 'one' }"
-      @click="changeWeek('one')"
+      :class="{activeWeekOne: getWeek === 'week1' }"
+      @click="changeWeek('week1')"
     >1-я неделя</div>
     <div
       class="two"
-      :class="{activeWeekTwo: getWeek === 'two' }"
-      @click="changeWeek('two')"
+      :class="{activeWeekTwo: getWeek === 'week2' }"
+      @click="changeWeek('week2')"
     >2-я неделя</div>
   </div>
 </template>

@@ -3,6 +3,7 @@
     <select-mobile></select-mobile>
     <weeks-mobile></weeks-mobile>
     <days-mobile></days-mobile>
+    <class-mobile></class-mobile>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import SelectMobile from "@/components/SelectMobile";
 import WeeksMobile from "@/components/WeeksMobile";
 import DaysMobile from '@/components/DaysMobile'
+import ClassMobile from '@/components/ClassMobile'
 
 export default {
   name: "Home",
@@ -17,6 +19,7 @@ export default {
     SelectMobile,
     WeeksMobile,
     DaysMobile,
+    ClassMobile
   },
   methods: {
     Resize() {

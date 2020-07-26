@@ -3,7 +3,10 @@
     <div
       v-for="tab in tabs"
       :key="tab.t"
-      :class="['tab-button', { active: choseTab === `${tab.t}` }]"
+      :class="['tab-button', { 
+        active: choseTab === `${tab.t}`,
+        green: choseWeek === 'week1',
+        blue: choseWeek === 'week2'}]"
       @click="changeDay(tab.t)"
     >{{tab.ruT}}</div>
   </div>
@@ -23,20 +26,23 @@ export default {
     };
   },
   computed: {
-    choseTab(){
-      if(this.$store.state.choseDay == null){ 
-        this.$store.commit('set_first_day', 'mon')
-        return 'mon'
-      }else{
-        return this.$store.state.choseDay
+    choseTab() {
+      if (this.$store.state.choseDay == null) {
+        this.$store.commit("set_first_day", "mon");
+        return "mon";
+      } else {
+        return this.$store.state.choseDay;
       }
-    }
+    },
+    choseWeek() {
+      return this.$store.state.week;
+    },
   },
   methods: {
-    changeDay: function(day){
-      this.$store.commit('set_day', day)
-    }
-  }
+    changeDay: function (day) {
+      this.$store.commit("set_day", day);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -48,8 +54,14 @@ export default {
 .tab-button {
   font-size: 1.1rem;
 }
+.green {
+  border-bottom-color: rgb(50, 183, 108);
+}
+.blue {
+  border-bottom-color: rgba(70, 90, 220, 0.91);
+}
 
 .active {
-  border-bottom: 2px solid rgb(50, 183, 108);
+  border-bottom-style: solid ;
 }
 </style>

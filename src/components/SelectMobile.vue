@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="head">
-      <div>418 с/в</div>
-      <div>Выбрать группу</div>
+      <!-- <div>418 с/в</div>
+      <div>Выбрать группу</div> -->
     </div>
     <div class="section_select">
       <select name id>
