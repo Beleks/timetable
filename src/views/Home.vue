@@ -1,21 +1,25 @@
 <template>
   <div>
     <select-mobile></select-mobile>
+    <weeks-mobile></weeks-mobile>
   </div>
 </template>
 
 <script>
 import NavbarDay from "@/components/NavbarDay";
-import SelectMobile from '@/components/SelectMobile'
+import SelectMobile from "@/components/SelectMobile";
+import WeeksMobile from "@/components/WeeksMobile";
 
 export default {
   name: "Home",
   components: {
-    NavbarDay, SelectMobile
+    NavbarDay,
+    SelectMobile,
+    WeeksMobile,
   },
   methods: {
     Resize() {
-      window.onresize = ev => {
+      window.onresize = (ev) => {
         // console.log(ev.target.innerWidth)
         if (ev.target.innerWidth > 800) {
           this.$router.push("/");
@@ -24,8 +28,8 @@ export default {
     },
   },
   // добавить mounted
-  mounted(){
-    this.Resize()
-  }
+  mounted() {
+    this.Resize();
+  },
 };
 </script>

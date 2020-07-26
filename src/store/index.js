@@ -14,6 +14,7 @@ export default new Vuex.Store({
       kurs_name: localStorage.getItem('kurs'),
       grup_name: localStorage.getItem('grup')
     },
+    week: localStorage.getItem('week'),
     days: [
       { dayRu: "Пн", dayEn: "mon" },
       { dayRu: "Вт", dayEn: "tue" },
@@ -43,7 +44,14 @@ export default new Vuex.Store({
       window.localStorage.setItem('grup', arr[0])
       state.inputValue.grup_name = arr[0]
     },
-
+    set_week(state, week) {
+      window.localStorage.setItem('week', week)
+      state.week = week
+    },
+    set_first_week(state, week) {
+      window.localStorage.setItem('week', week)
+      state.week = week
+    }
   },
   actions: {
     // GET_SAME_INFO({ commit }) {
