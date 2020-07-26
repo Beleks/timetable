@@ -29,40 +29,43 @@ export default {
     },
     content() {
       let str = this.testText;
-      console.log(str);
+      // console.log(str);
       if (str === "_") {
         return {
           prepod: "",
           para: "Пары нету :)",
-        }
+        };
       } else {
         let resultOne = str.match(/[.]/);
         let resultTwo = str.split(/[.]/)[0].length;
-        console.log(str.slice(resultTwo + 1));
+        // console.log(str.slice(resultTwo + 1));
 
         let resultSTR = str.slice(resultTwo + 1); // Строка без 'пр.' 'лек.'
 
         let resultMassiv = resultSTR.split(" ");
 
         let prepodMassiv = [];
+        let FSname = ""; // фамилия И.О препода
 
         resultMassiv.forEach((element, index) => {
           let el = element.match(/[А-Я][.][А-Я][.]/g);
-          console.log(el);
+
           if (el !== null) {
             prepodMassiv = [];
+            // FSname = ''
             console.log(el[0]);
 
             prepodMassiv.push(resultMassiv[index - 1]);
             prepodMassiv.push(el[0]);
-
-            return prepodMassiv
+            // console.log(prepodMassiv.join(" "));
+            FSname = prepodMassiv.join(" ");
+            return FSname;
           } else {
           }
         });
 
         return {
-          prepod: 'Препод'
+          prepod: FSname,
         };
       }
     },
