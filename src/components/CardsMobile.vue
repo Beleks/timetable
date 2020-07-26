@@ -11,7 +11,10 @@
       <div class="time"></div>
     </div>
     <div class="main-text">{{content.para}}</div>
-    <div class="footer">{{content.prepod}}</div>
+    <div class="footer">
+      <div>{{content.prepod}}</div>
+      <div>{{content.class}}</div>
+    </div>
   </div>
 </template>
 <script>
@@ -29,7 +32,7 @@ export default {
     },
     content() {
       let str = this.testText;
-      // console.log(str);
+      console.log(str);
       if (str === "_") {
         return {
           prepod: "",
@@ -46,6 +49,8 @@ export default {
 
         let prepodMassiv = [];
         let FSname = ""; // фамилия И.О препода
+        let classRoom = "";
+        let Para = ""
 
         resultMassiv.forEach((element, index) => {
           let el = element.match(/[А-Я][.][А-Я][.]/g);
@@ -55,9 +60,25 @@ export default {
             // FSname = ''
             console.log(el[0]);
 
+            // console.log(resultMassiv.splice());
+            // console.log(resultMassiv.length - 1);
+            // console.log(resultMassiv);
+
+            // Какой-то шлак выше :)
+
+            let newMasClass = resultMassiv.slice(
+              index + 1,
+              resultMassiv.length
+            ); // вырезаем все что после препода (аудитория)
+            let newMasPre = resultMassiv.slice(resultMassiv[0], index - 1); // вырезаем навзвание предмета
+            console.log(resultMassiv, "Массив в норме"); // так чисто проверочка
+            console.log(newMasPre); // получаем название пары
+            console.log(newMasClass); // получаем аудиторию
             prepodMassiv.push(resultMassiv[index - 1]);
             prepodMassiv.push(el[0]);
             // console.log(prepodMassiv.join(" "));
+            Para = newMasPre.join(" ");
+            classRoom = newMasClass.join(" ");
             FSname = prepodMassiv.join(" ");
             return FSname;
           } else {
@@ -65,7 +86,9 @@ export default {
         });
 
         return {
-          prepod: FSname,
+          prepod: FSname, // фамилия И.О препода
+          para: Para,
+          class: classRoom,
         };
       }
     },
@@ -103,5 +126,11 @@ export default {
 }
 .blue {
   background-color: rgba(70, 90, 220, 0.91);
+}
+
+// footer------------------------
+.footer {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
