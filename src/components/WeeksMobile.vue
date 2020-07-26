@@ -5,25 +5,27 @@
       :class="{activeWeekOne: getWeek === 'one' }"
       @click="changeWeek('one')"
     >1-я неделя</div>
-    <div class="two" :class="{activeWeekTwo: getWeek === 'two' }"
-    @click="changeWeek('two')">2-я неделя</div>
+    <div
+      class="two"
+      :class="{activeWeekTwo: getWeek === 'two' }"
+      @click="changeWeek('two')"
+    >2-я неделя</div>
   </div>
 </template>
 <script>
-
 export default {
   methods: {
-    changeWeek: function(week){
-      this.$store.commit('set_week', week)
+    changeWeek: function (week) {
+      this.$store.commit("set_week", week);
     },
   },
   computed: {
-    getWeek(){
-      if(this.$store.state.week == null){
-        this.$store.commit('set_first_week', 'one')
-        return 'one'
-      }else{
-        return this.$store.state.week
+    getWeek() {
+      if (this.$store.state.week == null) {
+        this.$store.commit("set_first_week", "one");
+        return "one";
+      } else {
+        return this.$store.state.week;
       }
     },
   },
