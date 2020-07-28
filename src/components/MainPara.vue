@@ -78,9 +78,9 @@ export default {
 .number_blue {
   background-color: rgba(70, 90, 220, 0.91);
 }
-// @media (min-width: 1400px) {
-//   .section {
-//     font-size: 0.9rem;
-//   }
-// }
+@media (min-width: 1400px) {
+  .section {
+    font-size: 0.9rem;
+  }
+}
 </style>

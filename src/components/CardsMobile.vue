@@ -50,38 +50,63 @@ export default {
         let prepodMassiv = [];
         let FSname = ""; // фамилия И.О препода
         let classRoom = "";
-        let Para = ""
+        let Para = "";
 
-        resultMassiv.forEach((element, index) => {
-          let el = element.match(/[А-Я][.][А-Я][.]/g);
+        resultMassiv.some((element, index) => {
+          // let el = element.match(/[А-Я][.][А-Я][.]/);
+          //
+          if (element.length <= 4) {
+            console.log(element);
+            let el = element.match(/[А-Я][.]/);
+            console.log(el, "элемент который мы ищем ?");
+            if (el !== null) {
+              prepodMassiv = []; // Надо ли обнулять ?
+              // FSname = ''
+              if (el.input.length == 2) {
+                console.log(el, "Зачем они поставили пробел ?");
+                let newMasClass = resultMassiv.slice(
+                  index + 2,
+                  resultMassiv.length
+                ); // вырезаем все что после препода (аудитория)
+                let newMasPre = resultMassiv.slice(resultMassiv[0], index - 1); // вырезаем навзвание предмета
 
-          if (el !== null) {
-            prepodMassiv = [];
-            // FSname = ''
-            console.log(el[0]);
+                prepodMassiv.push(resultMassiv[index - 1]);
+                prepodMassiv.push(el.input);
+                prepodMassiv.push(resultMassiv[index + 1]);
 
-            // console.log(resultMassiv.splice());
-            // console.log(resultMassiv.length - 1);
-            // console.log(resultMassiv);
+                Para = newMasPre.join(" ");
+                classRoom = newMasClass.join(" ");
+                FSname = prepodMassiv.join(" ");
 
-            // Какой-то шлак выше :)
+                return true;
+              } else {
+                console.log(el.input, "input");
 
-            let newMasClass = resultMassiv.slice(
-              index + 1,
-              resultMassiv.length
-            ); // вырезаем все что после препода (аудитория)
-            let newMasPre = resultMassiv.slice(resultMassiv[0], index - 1); // вырезаем навзвание предмета
-            console.log(resultMassiv, "Массив в норме"); // так чисто проверочка
-            console.log(newMasPre); // получаем название пары
-            console.log(newMasClass); // получаем аудиторию
-            prepodMassiv.push(resultMassiv[index - 1]);
-            prepodMassiv.push(el[0]);
-            // console.log(prepodMassiv.join(" "));
-            Para = newMasPre.join(" ");
-            classRoom = newMasClass.join(" ");
-            FSname = prepodMassiv.join(" ");
-            return FSname;
-          } else {
+                // console.log(resultMassiv.splice());
+                // console.log(resultMassiv.length - 1);
+                // console.log(resultMassiv);
+
+                // Какой-то шлак выше :)
+
+                let newMasClass = resultMassiv.slice(
+                  index + 1,
+                  resultMassiv.length
+                ); // вырезаем все что после препода (аудитория)
+                let newMasPre = resultMassiv.slice(resultMassiv[0], index - 1); // вырезаем навзвание предмета
+                console.log(resultMassiv, "Массив в норме"); // так чисто проверочка
+                console.log(newMasPre); // получаем название пары
+                console.log(newMasClass); // получаем аудиторию
+                prepodMassiv.push(resultMassiv[index - 1]);
+                prepodMassiv.push(el.input);
+                // console.log(prepodMassiv.join(" "));
+                Para = newMasPre.join(" ");
+                classRoom = newMasClass.join(" ");
+                FSname = prepodMassiv.join(" ");
+                return true;
+              }
+            } else {
+              // console.log(el)
+            }
           }
         });
 
