@@ -20,8 +20,8 @@
     </div>
     <div
       class="week"
-      :class="{borderGreen: currentWeek === one,
-    borderBlue: currentWeek === two}"
+      :class="{borderGreen: getWeek === 'week1',
+    borderBlue: getWeek === 'week2'}"
     >
       <div
         class="one"
