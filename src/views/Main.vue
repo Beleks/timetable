@@ -8,12 +8,7 @@
         </select>
         <select name id v-model="krs">
           <option disabled value>Выберите курс</option>
-          <option value="0">1 курс</option>
-          <option value="1">2 курс</option>
-          <option value="2">3 курс</option>
-          <option value="3">4 курс</option>
-          <option value="4">5 курс</option>
-          <option value="5">6 курс</option>
+          <option v-for="(option, index) in optionsKurs" :key="index" :value="index">{{option}}</option>
         </select>
         <select name id v-model="grp">
           <option disabled value>Выберите группу</option>
@@ -30,17 +25,18 @@
     >
       <div
         class="one"
-        :class="{activeWeekOne: currentWeek === one }"
-        @click="currentWeek = one"
+        :class="{activeWeekOne: getWeek === 'week1' }"
+        @click="changeWeek('week1')"
       >1-я неделя</div>
       <div
         class="two"
-        :class="{activeWeekTwo: currentWeek === two }"
-        @click="currentWeek = two"
+        :class="{activeWeekTwo: getWeek === 'week2' }"
+        @click="changeWeek('week2')"
       >2-я неделя</div>
     </div>
     <div class="table">
-      <div class="time row-6">
+      <div class="time row-6" :class="{green: getWeek == 'week1',
+      blue: getWeek == 'week2'}">
         <div>09:00 - 10:35</div>
         <div>10:45 - 12:20</div>
         <div>13:00 - 14:35</div>
@@ -48,7 +44,7 @@
         <div>16:25 - 18:00</div>
         <div>18:05 - 19:40</div>
       </div>
-      <div v-if="currentWeek == 'one'">
+      <div v-if="getWeek == 'week1'">
         <day-of-week
           :green="true"
           v-for="day in days"
@@ -58,7 +54,7 @@
           :choseWeek="'week1'"
         ></day-of-week>
       </div>
-      <div v-if="currentWeek == 'two'">
+      <div v-if="getWeek == 'week2'">
         <day-of-week
           :green="false"
           v-for="day in days"
@@ -75,14 +71,28 @@
 import DayOfWeek from "@/components/DayOfWeek";
 export default {
   data: () => {
-    return {
-      one: "one",
-      two: "two",
-      currentWeek: "one",
-    };
+    return {};
   },
-  methods: {},
   computed: {
+    getWeek() {
+      if (this.$store.state.week == null) {
+        this.$store.commit("set_first_week", "week1");
+        return "week1";
+      } else {
+        return this.$store.state.week;
+      }
+    },
+    optionsKurs() {
+      if (this.$store.state.info !== null) {
+        let kurs = this.$store.state.info;
+
+        let result = kurs.filter((obj) => obj.groups.length > 0);
+
+        let resultMas = result.map((item) => item.course);
+
+        return resultMas;
+      }
+    },
     massivGroup() {
       if (
         this.$store.state.info !== null &&
@@ -132,6 +142,9 @@ export default {
   },
   components: { DayOfWeek },
   methods: {
+    changeWeek: function (week) {
+      this.$store.commit("set_week", week);
+    },
     Resize() {
       window.onresize = (ev) => {
         // console.log(ev.target.innerWidth)
@@ -220,13 +233,20 @@ export default {
     justify-content: center;
     align-items: center;
     margin: auto;
-    background-color: rgba(251, 138, 0, 0.8);
+    // background-color: rgba(251, 138, 0, 0.8);
     border-radius: 5px;
     padding: 0.2em 0.4em;
     color: white;
   }
-  .div_green {
+}
+.green {
+  div {
     background-color: rgb(50, 183, 108);
+  }
+}
+.blue {
+  div {
+    background-color: rgba(70, 90, 220, 0.91);
   }
 }
 
