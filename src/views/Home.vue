@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <select-mobile></select-mobile>
     <weeks-mobile></weeks-mobile>
     <days-mobile></days-mobile>
@@ -37,3 +37,9 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.container{
+  max-width: 500px;
+  margin: auto;
+}
+</style>

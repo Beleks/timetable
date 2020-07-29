@@ -33,6 +33,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .weeks {
+  margin: auto;
+  max-width: 340px;
   display: flex;
   justify-content: space-around;
   margin-top: 0.5em;

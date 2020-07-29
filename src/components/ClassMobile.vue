@@ -5,12 +5,25 @@
       :key="index"
       :testText="myText"
       :testNum="index + 1"
+      :time="time[index].t"
     ></cards-mobile>
   </div>
 </template>
 <script>
 import CardsMobile from "@/components/CardsMobile";
 export default {
+  data: ()=>{
+    return {
+      time: [
+        {t: "09:00 - 10:35"},
+        {t: "10:45 - 12:20"},
+        {t: "13:00 - 14:35"},
+        {t: "14:45 - 16:20"},
+        {t: "16:25 - 18:00"},
+        {t: "18:05 - 19:40"}
+      ]
+    }
+  },
   components: {
     CardsMobile,
   },

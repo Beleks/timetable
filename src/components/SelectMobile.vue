@@ -1,31 +1,34 @@
 <template>
   <div>
     <div class="head">
-      <!-- <div>418 с/в</div>
-      <div>Выбрать группу</div> -->
+      <div>{{grp}}</div>
+      <div class="choose" @click=" show = !show">Выбрать группу</div>
     </div>
-    <div class="section_select">
-      <select name id>
-        <option disabled value>Выберите один из вариантов</option>
-        <option>Бакалавриат, специалитет</option>
-      </select>
-      <select name id v-model="krs">
-        <option disabled value>Выберите курс</option>
-        <option
-          v-for="(option, index) in optionsKurs"
-          :key="index"
-          :value="index"
-        >{{option}}</option>
-      </select>
-      <select name id v-model="grp">
-        <option disabled value>Выберите группу</option>
-        <option v-for="(option, index) in massivGroup" :key="index">{{option}}</option>
-      </select>
-    </div>
+    <transition name="fade">
+      <div class="section_select" v-show="show">
+        <select name id>
+          <option disabled value>Выберите один из вариантов</option>
+          <option>Бакалавриат, специалитет</option>
+        </select>
+        <select name id v-model="krs">
+          <option disabled value>Выберите курс</option>
+          <option v-for="(option, index) in optionsKurs" :key="index" :value="index">{{option}}</option>
+        </select>
+        <select name id v-model="grp">
+          <option disabled value>Выберите группу</option>
+          <option v-for="(option, index) in massivGroup" :key="index">{{option}}</option>
+        </select>
+      </div>
+    </transition>
   </div>
 </template>
 <script>
 export default {
+  data: () => {
+    return {
+      show: false,
+    };
+  },
   computed: {
     optionsKurs() {
       if (this.$store.state.info !== null) {
@@ -85,3 +88,44 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.head {
+  margin: 0em 1em;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  .choose {
+    margin-left: 1em;
+
+    padding: 0.2em 0.3em;
+    border-radius: 5px;
+    // border: 1px solid rgba(251, 138, 0, 0.8);
+    color: white;
+    background-color: rgba(243, 156, 17, 0.9);
+  }
+  margin-bottom: 0.7em;
+}
+.section_select {
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  select {
+    min-width: 260px;
+    max-width: 260px;
+    // width: 100%;
+    margin: 0.4em 1em;
+    font-size: 0.9rem;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  transition: opacity 0s;
+  opacity: 0;
+}
+</style>
