@@ -22,8 +22,8 @@ export default {
   computed: {
     getWeek() {
       if (this.$store.state.week == null) {
-        this.$store.commit("set_first_week", "one");
-        return "one";
+        this.$store.commit("set_first_week", "week1");
+        return "week1";
       } else {
         return this.$store.state.week;
       }

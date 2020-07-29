@@ -156,7 +156,7 @@ export default {
     font-size: 0.9rem;
     color: white;
     border-radius: 15px;
-    padding: 0.2em 0.5em;
+    padding: 0.1em 0.4em;
   }
   .time {
     // display: flex;
