@@ -19,7 +19,7 @@ export default {
         { t: "mon", ruT: "Пн" },
         { t: "tue", ruT: "Вт" },
         { t: "wed", ruT: "Ср" },
-        { t: "thu", ruT: "Чтв" },
+        { t: "thu", ruT: "Чт" },
         { t: "fri", ruT: "Пт" },
         { t: "sat", ruT: "Сб" },
       ],

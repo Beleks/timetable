@@ -73,7 +73,7 @@ export default new Vuex.Store({
     // }
     async getTimetable({ commit, state }) {
       let res = await axios
-        .get("http://service.bielecki.ru/timetable/index.php")
+        .get("https://service.bielecki.ru/timetable/index.php")
         .then(response => (this.info = response.data[0]));
 
       commit('set_info', res)
