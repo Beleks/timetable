@@ -83,8 +83,8 @@ export default {
       }
     },
     optionsKurs() {
-      if (this.$store.state.info !== null) {
-        let kurs = this.$store.state.info;
+      if (this.$store.state.vsgtu !== null) {
+        let kurs = this.$store.state.vsgtu;
 
         let result = kurs.filter((obj) => obj.groups.length > 0);
 
@@ -99,7 +99,7 @@ export default {
         this.$store.state.inputValue.kurs_name !== null
       ) {
         let choseKurs = this.$store.state.inputValue.kurs_name;
-        let MAS = this.$store.state.info[choseKurs].groups;
+        let MAS = this.$store.state.vsgtu[choseKurs].groups;
         let arr = [];
         MAS.forEach((element) => {
           arr.push(element.grname);

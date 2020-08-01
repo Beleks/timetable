@@ -46,9 +46,10 @@ export default {
     },
     text() {
       let kurs = this.$store.state.inputValue.kurs_name;
-      if (this.$store.state.info !== null) {
+      if (this.$store.state.vsgtu !== null) {
         let searchGroup = this.$store.state.inputValue.grup_name;
-        let massiv = this.$store.state.info[kurs].groups;
+        
+        let massiv = this.$store.state.vsgtu[kurs].groups;
 
         let res = massiv.find((g) => g.grname === searchGroup).table;
 

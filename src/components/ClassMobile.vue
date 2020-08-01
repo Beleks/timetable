@@ -34,8 +34,8 @@ export default {
       let choseWeekDay = this.$store.state.choseDay;
       let choseWeek = this.$store.state.week;
 
-      if (this.$store.state.info !== null) {
-        let massiv = this.$store.state.info[kurs].groups;
+      if (this.$store.state.vsgtu !== null) {
+        let massiv = this.$store.state.vsgtu[kurs].groups;
 
         let res = massiv.find((g) => g.grname === searchGroup).table;
         return res[choseWeek][choseWeekDay];

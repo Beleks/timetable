@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import parsInfo from '../utils/parsInfo'
 
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    vsgtu: null,
     info: null,
     update: null,
     inputValue: {
@@ -53,13 +54,51 @@ export default new Vuex.Store({
       window.localStorage.setItem('week', week)
       state.week = week
     },
-    set_first_day(state, day){
+    set_first_day(state, day) {
       window.localStorage.setItem('day', day)
       state.choseDay = day
     },
-    set_day(state, day){
+    set_day(state, day) {
       window.localStorage.setItem('day', day)
       state.choseDay = day
+    },
+    set_new_mas(state, info) {
+      let new_info = JSON.parse(info.ttable)
+
+      let main_masiv = new_info
+
+      let index_1
+      let index_2
+      let key_1
+      let key_2
+
+      main_masiv.forEach((element, index) => {
+        index_1 = index
+        element.groups.forEach((group, index) => {
+          index_2 = index
+          // console.log(new_info[index_1].groups[index_2], 'from state')
+          for (let key in group.table) {
+            key_1 = key
+            // let obj = new_info[index_1].groups[index_2].table[key_1]
+
+            let week = group.table[key]
+            for (let key in week) {
+              key_2 = key
+              let mas = new_info[index_1].groups[index_2].table[key_1][key_2]
+              week[key] = []
+              mas.forEach(element => {
+                
+                week[key].push(Vue.parsInfo(element))
+                // console.log(Vue.parsInfo(element), 'from state')
+              })
+
+            }
+          }
+        })
+      });
+
+      state.vsgtu = main_masiv
+
     }
   },
   actions: {
@@ -77,6 +116,7 @@ export default new Vuex.Store({
         .then(response => (this.info = response.data[0]));
 
       commit('set_info', res)
+      commit('set_new_mas', res)
     }
   },
   modules: {

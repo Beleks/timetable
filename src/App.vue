@@ -15,7 +15,7 @@ export default {
   mounted() {},
   methods: {
     getSize(string) {
-      console.log(string);
+      // console.log(string);
     }
     // ResizeTest() {
     //   window.onresize = ev => {
