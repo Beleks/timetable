@@ -10,7 +10,7 @@
       ></cards-mobile>
     </div>
     <div class="NO_anyСlasses" v-if="!anyСlasses">
-      <div>Пар нет</div>
+      <div>Нет занятий</div>
     </div>
   </div>
 </template>

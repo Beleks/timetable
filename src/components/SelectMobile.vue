@@ -16,7 +16,12 @@
         </select>
         <select name id v-model="grp">
           <option disabled value>Выберите группу</option>
-          <option v-for="(option, index) in massivGroup" :key="index">{{option}}</option>
+          <option
+            v-for="(option, index) in massivGroup"
+            :value="option.name"
+            :key="index"
+            :disabled="option.dis"
+          >{{option.name}}</option>
         </select>
       </div>
     </transition>
@@ -48,16 +53,38 @@ export default {
       ) {
         let choseKurs = this.$store.state.inputValue.kurs_name;
         let MAS = this.$store.state.vsgtu[choseKurs].groups;
+        let arr_proverka = []; // массив для проверки
         let arr = [];
+        let gr = {};
         MAS.forEach((element) => {
-          arr.push(element.grname);
+          gr = {};
+          gr.name = element.grname;
+          gr.dis = false;
+
+          arr_proverka.push(element.grname);
+          arr.push(gr);
         });
 
-        if (!arr.includes(this.$store.state.inputValue.grup_name)) {
+        // console.log(arr);
+        if (!arr_proverka.includes(this.$store.state.inputValue.grup_name)) { 
+          // лищний раз перещитывает computed (исправить)
           this.$store.commit("set_group_after_arr", arr);
         }
 
-        // console.log(this.$store.state.inputValue.grup_name);
+       
+
+        let blackList = ["Б568"];
+
+        arr.forEach((element, index) => {
+          blackList.find((i) => {
+            if (i === element.name) {
+              // console.log(i, element, index);
+              arr[index].name = element.name + " (нет данных)";
+              arr[index].dis = true;
+            }
+          });
+        });
+
         return arr;
       }
     },
@@ -82,6 +109,7 @@ export default {
         }
       },
       set(value) {
+        console.log(event.target.value);
         this.$store.commit("set_name_kurs", event.target.value);
       },
     },

@@ -43,8 +43,8 @@ export default new Vuex.Store({
       state.inputValue.kurs_name = kursInfo
     },
     set_group_after_arr(state, arr) {
-      window.localStorage.setItem('grup', arr[0])
-      state.inputValue.grup_name = arr[0]
+      window.localStorage.setItem('grup', arr[0].name)
+      state.inputValue.grup_name = arr[0].name
     },
     set_week(state, week) {
       window.localStorage.setItem('week', week)
