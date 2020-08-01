@@ -8,7 +8,7 @@ export default {
         let CLS = null;
         return {
           prepod: "",
-          para: "Пары нету :)",
+          para: "_",
           class: CLS,
         };
       } else {
