@@ -1,16 +1,22 @@
 <template>
   <div class="nav-menu">
     <div class="left">
-      <div class="nav-block activ">
+      <div
+        class="nav-block activ"
+        :class="{
+          green: choseWeek === 'week1',
+          blue: choseWeek === 'week2'
+        }"
+      >
         <img src="@/icons/g.png" alt />
       </div>
-      <div class="nav-block ">
+      <div class="nav-block">
         <img class="prepod" src="@/icons/t.png" alt />
       </div>
     </div>
     <div class="right">
       <div>{{grp}}</div>
-      <svg 
+      <svg
         @click="changeShow()"
         fill="#000000"
         xmlns="http://www.w3.org/2000/svg"
@@ -39,13 +45,16 @@ export default {
         this.$store.commit("set_name_grup", event.target.value);
       },
     },
+    choseWeek() {
+      return this.$store.state.week;
+    },
   },
   methods: {
-    changeShow(){
-      let show = this.$store.state.showSelect
-      this.$store.commit('change_show', !show)
-    }
-  } 
+    changeShow() {
+      let show = this.$store.state.showSelect;
+      this.$store.commit("change_show", !show);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -61,27 +70,32 @@ export default {
       // border: 1px solid black;
       // background-color: grey;
       margin-left: 1em;
+      
       img {
         width: 30px;
       }
-      .prepod{
+      .prepod {
         opacity: 0.5;
       }
     }
     .activ {
-      // background-color: rgba(194, 194, 194, 0.753);
-      // padding: 0 0 1px 0;
-      // border: 1px solid gray;
-      border-bottom: 2px solid rgb(50, 183, 108);
+      border-bottom-style: solid;
+      
     }
   }
-  .right{
+  .right {
     display: flex;
     align-items: center;
-    svg{
+    svg {
       margin-left: 1em;
       width: 15px;
     }
   }
+}
+.green {
+  border-bottom-color: rgb(50, 183, 108);
+}
+.blue {
+  border-bottom-color: rgba(70, 90, 220, 0.91);
 }
 </style>
