@@ -25,6 +25,7 @@ export default new Vuex.Store({
       { dayRu: "Пт", dayEn: "fri" },
       { dayRu: "Сб", dayEn: "sat" }
     ],
+    blackList: ['Б568', 'Б618 моаис'],
     green: true
   },
   mutations: {
@@ -87,7 +88,7 @@ export default new Vuex.Store({
               let mas = new_info[index_1].groups[index_2].table[key_1][key_2]
               week[key] = []
               mas.forEach(element => {
-                
+
                 week[key].push(Vue.parsInfo(element))
                 // console.log(Vue.parsInfo(element), 'from state')
               })

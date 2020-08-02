@@ -73,7 +73,7 @@ export default {
 
        
 
-        let blackList = ["Б568"];
+        let blackList = this.$store.state.blackList
 
         arr.forEach((element, index) => {
           blackList.find((i) => {
