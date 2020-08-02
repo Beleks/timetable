@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="head">
+    <!-- <div class="head">
       <div>{{grp}}</div>
-      <div class="choose" @click=" show = !show">Выбрать группу</div>
-    </div>
+      <div class="choose">Выбрать группу</div>
+    </div> -->
     <transition name="fade">
       <div class="section_select" v-show="show">
         <select name id>
@@ -31,10 +31,13 @@
 export default {
   data: () => {
     return {
-      show: false,
+      // show: false,
     };
   },
   computed: {
+    show(){
+      return this.$store.state.showSelect
+    },
     optionsKurs() {
       if (this.$store.state.vsgtu !== null) {
         let kurs = this.$store.state.vsgtu;
@@ -109,7 +112,6 @@ export default {
         }
       },
       set(value) {
-        console.log(event.target.value);
         this.$store.commit("set_name_kurs", event.target.value);
       },
     },

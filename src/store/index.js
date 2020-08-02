@@ -8,6 +8,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    showSelect: false,
     vsgtu: null,
     info: null,
     update: null,
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     green: true
   },
   mutations: {
+    change_show(state, value){
+      state.showSelect = value
+    },
     set_info(state, info) {
 
       state.update = info.datetable

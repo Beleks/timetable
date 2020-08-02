@@ -1,17 +1,21 @@
 <template>
-  <div class="container">
-    <select-mobile></select-mobile>
-    <weeks-mobile></weeks-mobile>
-    <days-mobile></days-mobile>
-    <class-mobile></class-mobile>
+  <div>
+    <div class="container">
+      <nav-bar></nav-bar>
+      <select-mobile></select-mobile>
+      <weeks-mobile></weeks-mobile>
+      <days-mobile></days-mobile>
+      <class-mobile></class-mobile>
+    </div>
   </div>
 </template>
 
 <script>
+import NavBar from "@/components/NavBar";
 import SelectMobile from "@/components/SelectMobile";
 import WeeksMobile from "@/components/WeeksMobile";
-import DaysMobile from '@/components/DaysMobile'
-import ClassMobile from '@/components/ClassMobile'
+import DaysMobile from "@/components/DaysMobile";
+import ClassMobile from "@/components/ClassMobile";
 
 export default {
   name: "Home",
@@ -19,7 +23,8 @@ export default {
     SelectMobile,
     WeeksMobile,
     DaysMobile,
-    ClassMobile
+    ClassMobile,
+    NavBar,
   },
   methods: {
     Resize() {
@@ -38,7 +43,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.container{
+.container {
   max-width: 500px;
   margin: auto;
 }
