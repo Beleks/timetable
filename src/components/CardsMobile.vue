@@ -64,7 +64,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   .number {
-    font-size: 0.9rem;
+    // font-size: 0.9rem;
     color: white;
     border-radius: 15px;
     padding: 0.1em 0.4em;
@@ -73,12 +73,16 @@ export default {
     // display: flex;
     // align-items: center;
     // justify-content: center;
-    font-size: 0.9rem;
+    // font-size: 0.9rem;
     color: white;
     // background-color: rgba(243, 156, 17, 0.9);
     border-radius: 15px;
     padding: 0.1em 0.5em;
   }
+}
+.main-text{
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .green {
@@ -95,16 +99,16 @@ export default {
   align-items: center;
   .room {
     background-color: rgba(243, 156, 17, 0.9);
-    font-size: 0.9rem;
+    // font-size: 0.9rem;
     color: white;
     border-radius: 15px;
     padding: 0.1em 0.5em;
   }
   .prepod {
     font-size: 0.9rem;
-    border-bottom: 1px solid gray;
+    // border-bottom: 1px solid gray;
     // font-weight: 300;
-    // font-style: italic;
+    font-style: italic;
   }
 }
 </style>
