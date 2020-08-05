@@ -176,7 +176,7 @@ export default {
       window.onresize = (ev) => {
         // console.log(ev.target.innerWidth)
         if (ev.target.innerWidth <= 800) {
-          this.$router.push("/home");
+          this.$router.replace("/");
         }
       };
     },

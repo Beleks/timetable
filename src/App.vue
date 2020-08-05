@@ -28,9 +28,9 @@ export default {
   },
   beforeCreate: function() {
     if (document.documentElement.clientWidth > 800) {
-      this.$router.push("/");
+      this.$router.replace("/main");
     } else if (document.documentElement.clientWidth <= 800) {
-      this.$router.push("/home");
+      this.$router.replace("/");
     }
     this.$store.dispatch("getTimetable");
   },
