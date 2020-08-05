@@ -48,16 +48,16 @@ export default {
   // align-items: center;
 
   // font-size: 0.78rem;
-  min-height: 70px;
+  min-height: 90px;
   border: 10px;
   padding: 0.3em;
   margin: 0.4em 0.2em;
 
   box-shadow: 0px 0px 16px 0px rgba(166, 166, 166, 0.27);
   border-radius: 10px;
-  div:not(:last-child){
-    margin-bottom: 0.3em;
-  }
+}
+.card > div:not(:first-child) {
+  margin-top: 0.3em;
 }
 .head {
   display: flex;
@@ -80,7 +80,7 @@ export default {
     padding: 0.1em 0.5em;
   }
 }
-.main-text{
+.main-text {
   font-weight: bold;
   font-size: 0.9rem;
 }

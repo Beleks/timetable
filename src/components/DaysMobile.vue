@@ -47,12 +47,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 .days {
-  margin-top: 0.5em;
+  margin-top: 0.7em;
   display: flex;
   justify-content: space-around;
 }
 .tab-button {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  padding: 0 3px;
 }
 .green {
   border-bottom-color: rgb(50, 183, 108);
