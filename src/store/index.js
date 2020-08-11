@@ -30,13 +30,14 @@ export default new Vuex.Store({
     green: true
   },
   mutations: {
-    change_show(state, value){
+    change_show(state, value) {
       state.showSelect = value
     },
     set_info(state, info) {
-
+      console.log(info)
       state.update = info.datetable
       state.info = JSON.parse(info.ttable)
+
 
     },
     set_name_grup(state, grupInfo) {
