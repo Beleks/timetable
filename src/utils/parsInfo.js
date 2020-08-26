@@ -13,13 +13,19 @@ export default {
         };
       } else {
         let resultOne = str.match(/[.]/);
-        let resultTwo = str.split(/[.]/)[0].length;
-        // console.log(str.slice(resultTwo + 1));
+        let resultTwo = str.split(/[.]/)[0].length; // длина строки до точки 'пр' 'лек' 
 
-        let resultSTR = str.slice(resultTwo + 1); // Строка без 'пр.' 'лек.'
+        // console.log(str)
+        // console.log(str[resultTwo])
+
+        // Создадим переменную в кторой будет лек. пр.
+        let kindOfPara = str.slice(0, resultTwo + 1)
+        // console.log(kindOfPara);
+
+        let resultSTR = str.slice(resultTwo + 1); // Строка без 'пр.' 'лек.'; +1 - это с "."
 
         let resultMassiv = resultSTR.split(" ");
-
+        // console.log(resultSTR)
         let prepodMassiv = [];
         let FSname = ""; // фамилия И.О препода
         let classRoom = "";
@@ -33,6 +39,7 @@ export default {
             let el = element.match(/[А-Я][.]/);
 
             if (el !== null) {
+              // console.log(el)
               prepodMassiv = []; // Надо ли обнулять ?
               // FSname = ''
               if (el.input.length == 2) {

@@ -14,7 +14,8 @@ export default new Vuex.Store({
     update: null,
     inputValue: {
       kurs_name: localStorage.getItem('kurs'),
-      grup_name: localStorage.getItem('grup')
+      grup_name: localStorage.getItem('grup'),
+      pd_num: 2
     },
     week: localStorage.getItem('week'),
     choseDay: localStorage.getItem('day'),
@@ -34,9 +35,11 @@ export default new Vuex.Store({
       state.showSelect = value
     },
     set_info(state, info) {
-      console.log(info)
+      // console.log(info)
+      // console.log(info.ttable)
       state.update = info.datetable
       state.info = JSON.parse(info.ttable)
+      
 
 
     },
@@ -69,7 +72,10 @@ export default new Vuex.Store({
       state.choseDay = day
     },
     set_new_mas(state, info) {
+      // console.log(info.ttable)
       let new_info = JSON.parse(info.ttable)
+      // console.log(new_info)
+      
 
       let main_masiv = new_info
 
@@ -117,12 +123,18 @@ export default new Vuex.Store({
     //     })
     // }
     async getTimetable({ commit, state }) {
-      let res = await axios
-        .get("https://service.bielecki.ru/timetable/index.php")
-        .then(response => (this.info = response.data[0]));
+      try {
+        let res = await axios
+          .get("https://service.bielecki.ru/timetable/index.php?mode=table&spec=bakalavriat")
+          .then(response => (this.info = response.data[0]));
+          console.log(this.info)
+        commit('set_info', res)
+        commit('set_new_mas', res)
+      }
+      catch{
 
-      commit('set_info', res)
-      commit('set_new_mas', res)
+      }
+
     }
   },
   modules: {
