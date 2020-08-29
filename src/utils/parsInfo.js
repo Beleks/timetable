@@ -3,13 +3,14 @@ export default {
     Vue.parsInfo = function (string) {
 
       let str = string;
-      // console.log(str);
+      // Получаю строку
       if (str === "_") {
-        let CLS = null;
+        // let CLS = null;
         return {
           prepod: "",
           para: "_",
-          class: CLS,
+          class: null,
+          podgroup: null
         };
       } else {
         let resultOne = str.match(/[.]/);
@@ -22,11 +23,55 @@ export default {
         let kindOfPara = str.slice(0, resultTwo + 1)
         // console.log(kindOfPara);
 
-        let resultSTR = str.slice(resultTwo + 1); // Строка без 'пр.' 'лек.'; +1 - это с "."
+        // Строка без 'пр.' 'лек.'; +1 - это с "."
+        // let resultSTR = str.slice(resultTwo + 1);
+        let resultSTR = str
 
+
+        let PROBA_STR = resultSTR.matchAll(/[А-Я][.]/g) // Поиск по всей строке
+
+        let ARR = Array.from(PROBA_STR)
+
+        // console.log(Array.from(PROBA_STR).length)
+        let twoPredmetMassiv
+
+        if (ARR.length > 2 && ARR.length < 5) {
+          // console.log(ARR)
+          console.log(resultSTR)
+          twoPredmetMassiv = resultSTR.split(" ")
+          // console.log(twoPredmetMassiv)
+          // Нашли строки где две фамилии
+          // ====================
+          twoPredmetMassiv.some((element, index) => {
+            if (element.length <= 5) {
+              let elSimbol = element.match(/[А-Я][.]/);
+
+
+              if (elSimbol !== null) {
+                
+                if (elSimbol.input.length == 2) {
+
+                } else {
+                  console.log(twoPredmetMassiv)
+                  // console.log(twoPredmetMassiv[index], 'то что надо')
+                  console.log(twoPredmetMassiv[index + 1])
+                  console.log(twoPredmetMassiv[index + 2])
+                  console.log(twoPredmetMassiv[index + 3])
+                  
+                  
+                  return true
+                }
+              }
+            }
+          })
+        }
+
+
+
+        // ====================================
         let resultMassiv = resultSTR.split(" ");
-        // console.log(resultSTR)
-        let prepodMassiv = [];
+
+        let prepodMassiv = []; // Массив с Ф, ИО
         let FSname = ""; // фамилия И.О препода
         let classRoom = "";
         let Para = "";
@@ -38,6 +83,7 @@ export default {
             // console.log(element);
             let el = element.match(/[А-Я][.]/);
 
+            // console.log(el)
             if (el !== null) {
               // console.log(el)
               prepodMassiv = []; // Надо ли обнулять ?

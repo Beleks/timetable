@@ -74,7 +74,6 @@ export default new Vuex.Store({
     set_new_mas(state, info) {
       // console.log(info.ttable)
       let new_info = JSON.parse(info.ttable)
-      // console.log(new_info)
       
 
       let main_masiv = new_info
@@ -85,22 +84,23 @@ export default new Vuex.Store({
       let key_2
 
       main_masiv.forEach((element, index) => {
-        index_1 = index
+        index_1 = index // индекс курса 
         element.groups.forEach((group, index) => {
           index_2 = index
-          // console.log(new_info[index_1].groups[index_2], 'from state')
           for (let key in group.table) {
             key_1 = key
             // let obj = new_info[index_1].groups[index_2].table[key_1]
 
-            let week = group.table[key]
+            let week = group.table[key] // Объект с днями недели 
+            
             for (let key in week) {
               key_2 = key
               let mas = new_info[index_1].groups[index_2].table[key_1][key_2]
-              week[key] = []
+              
+              week[key] = [] // отчищает от массива со стороками
               mas.forEach(element => {
 
-                week[key].push(Vue.parsInfo(element))
+                week[key].push(Vue.parsInfo(element)) // создает масив со объектами где каждый объект это описание пары
                 // console.log(Vue.parsInfo(element), 'from state')
               })
 
@@ -125,7 +125,7 @@ export default new Vuex.Store({
     async getTimetable({ commit, state }) {
       try {
         let res = await axios
-          .get("https://service.bielecki.ru/timetable/index.php?mode=table&spec=bakalavriat")
+          .get("http://service.bielecki.ru/timetable/index.php?mode=table&spec=bakalavriat")
           .then(response => (this.info = response.data[0]));
           console.log(this.info)
         commit('set_info', res)

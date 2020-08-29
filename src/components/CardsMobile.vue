@@ -8,7 +8,7 @@
           blue: choseWeek === 'week2'
           }"
       >{{testNum}}</div>
-      <div class="podgroup">
+      <div class="podgroup" v-if="testText.podgroup !==null">
         <!-- <div class="bg right">2 п/г</div> -->
         <div
           :class="['bg', {
@@ -29,7 +29,7 @@
           }"
       >{{time}}</div>
     </div>
-    <div class="slider">
+    <div class="slider" >
       <div class="slider__wrapper">
         <div
           class="main-text slider__item"
