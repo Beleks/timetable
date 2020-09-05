@@ -8,7 +8,7 @@
           blue: choseWeek === 'week2'
           }"
       >{{testNum}}</div>
-      <div class="podgroup" v-if="testText.podgroup !==null">
+      <div class="podgroup" v-if="testText.two !==null">
         <!-- <div class="bg right">2 п/г</div> -->
         <div
           :class="['bg', {
@@ -18,8 +18,8 @@
           blue: choseWeek === 'week2'
         }]"
         ></div>
-        <div class="chose" @click="chosePg_Data = 1">1 п/г</div>
-        <div @click="chosePg_Data = 2">2 п/г</div>
+        <div class="chose" @click="chosePg_Data = 1">1</div>
+        <div @click="chosePg_Data = 2">2</div>
       </div>
       <div
         class="time"
@@ -29,27 +29,36 @@
           }"
       >{{time}}</div>
     </div>
-    <div class="slider" >
+    <div class="slider">
       <div class="slider__wrapper">
         <div
           class="main-text slider__item"
           :class="{position: chosePg_Data === 2}"
-        >{{testText.para}}</div>
+        >{{testText.one.para}}</div>
         <div
+          v-if="testText.two !==null"
           class="main-text slider__item"
           :class="{position: chosePg_Data === 1}"
-        >Привет, как дела ?</div>
+        >{{testText.two.para}}</div>
       </div>
     </div>
     <div class="footer">
-      <div class="prepod" :class="{position: chosePg_Data === 2}">{{testText.prepod}}</div>
-      <div class="prepod" :class="{position: chosePg_Data === 1}">БЕЛЕЦКИЙ A.В</div>
+      <div class="prepod" :class="{position: chosePg_Data === 2}">{{testText.one.prepod}}</div>
       <div
-        :class="{room: testText.class !==null,
+        v-if="testText.two !==null"
+        class="prepod"
+        :class="{position: chosePg_Data === 1}"
+      >{{testText.two.prepod}}</div>
+      <div
+        :class="{room: testText.one.class !==null,
       position: chosePg_Data === 2}"
-      >{{testText.class}}</div>
-      <div class="room" :class="{
-      position: chosePg_Data === 1}">a.10-2</div>
+      >{{testText.one.class}}</div>
+      <div
+        v-if="testText.two !==null"
+        class="room"
+        :class="{
+      position: chosePg_Data === 1}"
+      >{{testText.two.class}}</div>
     </div>
   </div>
 </template>
@@ -163,11 +172,11 @@ export default {
       // margin:0 2px;
       // border: 1px solid rgb(167, 167, 167);
       border-radius: 15px;
-      padding: 0.1em 0.7em;
+      padding: 0.1em 1.5em;
     }
     .bg {
       padding: 0;
-      width: 54.7px;
+      width: 56.9px;
       height: 21.6px;
       position: absolute;
       z-index: 100;
@@ -178,7 +187,7 @@ export default {
       transform: translateX(0);
     }
     .right {
-      transform: translateX(54.7px);
+      transform: translateX(56.9px);
     }
   }
 }
@@ -204,6 +213,7 @@ export default {
   align-items: center;
   .room {
     background-color: rgba(243, 156, 17, 0.9);
+    max-width: 110px;
     // font-size: 0.9rem;
     color: white;
     border-radius: 15px;

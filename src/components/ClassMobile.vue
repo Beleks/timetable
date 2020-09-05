@@ -48,7 +48,7 @@ export default {
         let massiv = this.$store.state.vsgtu[kurs].groups;
         let res = massiv.find((g) => g.grname === searchGroup).table;
         anyСlasses = res[choseWeek][choseWeekDay].some((element) => {
-          if (element.para.length > 2) {
+          if (element.one.para.length > 2) {
             return true;
           }
         });
