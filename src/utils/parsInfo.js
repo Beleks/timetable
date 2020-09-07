@@ -75,7 +75,7 @@ export default {
 
                   let firstParaMassiv = twoPredmetMassiv.slice(0, index + 2)
                   let secondaParaMassiv = twoPredmetMassiv.slice(index + 2)
-                  console.log(firstParaMassiv)
+                  
                   // console.log(secondaParaMassiv)
                   OneChose = ParsSTR(firstParaMassiv)
                   TwoChose = ParsSTR(secondaParaMassiv)
